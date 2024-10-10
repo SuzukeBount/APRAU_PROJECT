@@ -1,27 +1,51 @@
-Univariate Analysis for Rainfall_Winter
-Frequency Distribution (Top 10):
-Rainfall_Winter
-655.16     3
-374.59     2
-231.30     2
-176.70     2
-503.82     2
-1140.78    2
-829.64     2
-953.35     2
-1071.47    2
-626.90     2
-Name: count, dtype: int64
+    Univariate Analysis for Rainfall_Winter
+    Frequency Distribution (Top 10):
+    Rainfall_Winter
+    655.16     3
+    374.59     2
+    231.30     2
+    176.70     2
+    503.82     2
+    1140.78    2
+    829.64     2
+    953.35     2
+    1071.47    2
+    626.90     2
+    Name: count, dtype: int64
 
-Mean: 638.248777302944
-Median: 631.595
-Mode: 655.16
+    Mean: 638.248777302944
+    Median: 631.595
+    Mode: 655.16
 
-Standard Deviation: 319.2106465681423
-Range: 1109.18
-Variance: 101895.43688245147
-IQR: 555.69
+    Standard Deviation: 319.2106465681423
+    Range: 1109.18
+    Variance: 101895.43688245147
+    IQR: 555.69
 
-Skewness: 0.03919103294439981
-Kurtosis: -1.1983778413632151
+    Skewness: 0.03919103294439981
+    Kurtosis: -1.1983778413632151
 
+
+1. **Medidas de Tendência Central**:
+   - A média (`Mean`) é de aproximadamente 638 mm, indicando que, em média, a precipitação no inverno é de cerca de 638 mm.
+   - A mediana é de 631,6 mm, sugerindo que metade dos valores de precipitação no inverno está abaixo deste valor, o que indica uma distribuição bastante equilibrada.
+   - A moda é de 655,16 mm, o que significa que este é o valor mais frequente, embora não haja um valor que se destaque muito em termos de frequência.
+
+2. **Variabilidade**:
+   - O desvio padrão (`Standard Deviation`) é de aproximadamente 319 mm, indicando uma alta variabilidade na precipitação durante o inverno.
+   - O intervalo (`Range`) é de 1109,18 mm, mostrando uma grande diferença entre o valor mínimo e o valor máximo de precipitação no inverno, o que sugere a presença de outliers.
+   - A variância é de aproximadamente 101.895, refletindo a elevada dispersão dos valores de precipitação.
+   - O IQR (`Interquartile Range`) é de 555,69 mm, indicando que a metade central dos valores de precipitação está distribuída numa faixa ampla, o que reforça a ideia de variabilidade considerável.
+
+3. **Assimetria e Curtose**:
+   - A assimetria (`Skewness`) é próxima de zero (0,04), indicando que a distribuição dos valores de precipitação no inverno é quase simétrica, sem uma inclinação significativa para nenhum dos lados.
+   - A curtose (`Kurtosis`) é negativa (-1,20), o que sugere que a distribuição é mais achatada do que uma distribuição normal, com menos valores concentrados em torno da média e caudas mais leves.
+
+4. **Distribuição de Frequência**:
+   - A distribuição de frequência mostra que há uma série de valores que aparecem duas ou três vezes cada, sugerindo que a precipitação não tem um valor claramente dominante.
+   - Os valores mais frequentes variam entre 176 e 1140 mm, indicando uma ampla variação na precipitação no inverno, o que reflete a alta variabilidade observada.
+
+**Conclusão Geral**:
+A precipitação no inverno apresenta uma média de 638 mm, com uma distribuição bastante simétrica e uma alta variabilidade, como evidenciado pelo desvio padrão de 319 mm e pelo IQR de 555 mm. 
+A curtose negativa indica uma distribuição mais espalhada, sem uma concentração acentuada em torno da média. 
+A ampla faixa de precipitação sugere que, em diferentes locais ou períodos, a precipitação no inverno pode variar consideravelmente, o que é importante para o planeamento de recursos hídricos e estratégias de mitigação de impactos climáticos.

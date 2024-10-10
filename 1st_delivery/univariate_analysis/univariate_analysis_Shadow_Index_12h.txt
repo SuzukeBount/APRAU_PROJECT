@@ -25,3 +25,28 @@ IQR: 27.0
 Skewness: -1.2543499350740914
 Kurtosis: 2.513077147037489
 
+
+1. **Medidas de Tendência Central**:
+   - A média (`Mean`) é de aproximadamente 221,61, indicando que, em média, o índice de sombra ao meio-dia é de cerca de 222.
+   - A mediana é de 225, o que sugere que metade dos valores do índice de sombra está abaixo deste valor, indicando uma concentração ligeiramente maior de valores mais altos.
+   - A moda é de 224, o que significa que este valor é o mais frequente.
+
+2. **Variabilidade**:
+   - O desvio padrão (`Standard Deviation`) é de cerca de 22,59, indicando uma variabilidade moderada nos valores do índice de sombra ao meio-dia.
+   - O intervalo (`Range`) é de 155, mostrando uma diferença considerável entre os valores mínimo e máximo do índice de sombra.
+   - A variância é de aproximadamente 510,1, o que reflete a dispersão dos valores em torno da média.
+   - O IQR (`Interquartile Range`) é de 27, indicando que a metade central dos valores de sombra está distribuída numa faixa relativamente estreita, sugerindo menos variabilidade entre o primeiro e o terceiro quartil.
+
+3. **Assimetria e Curtose**:
+   - A assimetria (`Skewness`) é negativa (-1,25), indicando que a distribuição é assimétrica para a esquerda. Isso significa que há uma concentração maior de valores mais altos, com alguns valores mais baixos que criam uma cauda à esquerda.
+   - A curtose (`Kurtosis`) é positiva (2,51), sugerindo que a distribuição é mais pontiaguda do que a normal, com maior concentração de valores em torno da média e caudas mais pesadas, indicando a presença de outliers.
+
+4. **Distribuição de Frequência**:
+   - O valor mais frequente é 224, com 104 ocorrências. Outros valores, como 230, 232 e 231, também aparecem frequentemente, indicando uma concentração significativa de valores entre 220 e 235.
+   - A maioria dos valores mais frequentes está agrupada entre 223 e 234, mostrando uma tendência para valores elevados no índice de sombra ao meio-dia.
+
+**Conclusão Geral**:
+O índice de sombra ao meio-dia apresenta uma média de cerca de 222 e uma moda de 224, sugerindo que os valores tendem a estar principalmente na faixa de 220 a 235. 
+A distribuição é assimétrica para a esquerda, indicando que a maioria dos valores são relativamente altos, com alguns valores mais baixos que resultam em uma cauda à esquerda. 
+A curtose positiva implica que há uma concentração elevada de valores próximos à média, o que significa que a maioria das áreas tem um índice de sombra consistente ao meio-dia,
+com algumas áreas apresentando variações extremas. Estes resultados são importantes para entender a cobertura de sombra durante o meio-dia, o que pode influenciar atividades como a agricultura, planejamento urbano e eficiência energética.
