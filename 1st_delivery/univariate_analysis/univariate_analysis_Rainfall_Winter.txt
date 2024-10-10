@@ -1,0 +1,27 @@
+Univariate Analysis for Rainfall_Winter
+Frequency Distribution (Top 10):
+Rainfall_Winter
+655.16     3
+374.59     2
+231.30     2
+176.70     2
+503.82     2
+1140.78    2
+829.64     2
+953.35     2
+1071.47    2
+626.90     2
+Name: count, dtype: int64
+
+Mean: 638.248777302944
+Median: 631.595
+Mode: 655.16
+
+Standard Deviation: 319.2106465681423
+Range: 1109.18
+Variance: 101895.43688245147
+IQR: 555.69
+
+Skewness: 0.03919103294439981
+Kurtosis: -1.1983778413632151
+

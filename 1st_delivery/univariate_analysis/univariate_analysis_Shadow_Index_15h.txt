@@ -1,0 +1,27 @@
+Univariate Analysis for Shadow_Index_15h
+Frequency Distribution (Top 10):
+Shadow_Index_15h
+138    64
+150    55
+137    53
+142    51
+148    51
+132    50
+143    49
+131    46
+149    46
+136    45
+Name: count, dtype: int64
+
+Mean: 131.9377967711301
+Median: 136.0
+Mode: 138
+
+Standard Deviation: 43.864852847195465
+Range: 248
+Variance: 1924.1253153061118
+IQR: 55.25
+
+Skewness: -0.49458589545788595
+Kurtosis: 0.12298657654483192
+

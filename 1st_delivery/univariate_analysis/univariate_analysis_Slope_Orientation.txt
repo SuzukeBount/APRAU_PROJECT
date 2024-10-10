@@ -1,0 +1,27 @@
+Univariate Analysis for Slope_Orientation
+Frequency Distribution (Top 10):
+Slope_Orientation
+63    44
+76    37
+86    31
+94    31
+96    31
+45    31
+75    30
+87    30
+57    29
+95    28
+Name: count, dtype: int64
+
+Mean: 146.56885090218424
+Median: 117.0
+Mode: 63
+
+Standard Deviation: 101.83047435701401
+Range: 359
+Variance: 10369.445507774488
+IQR: 150.0
+
+Skewness: 0.6239111107423263
+Kurtosis: -0.7946127179781568
+

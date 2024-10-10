@@ -1,0 +1,27 @@
+Univariate Analysis for Horizontal_Distance_To_Fire_Points
+Frequency Distribution (Top 10):
+Horizontal_Distance_To_Fire_Points
+618     15
+700     14
+1448    14
+912     13
+997     11
+1050    11
+819     11
+1860    10
+902     10
+1383    10
+Name: count, dtype: int64
+
+Mean: 1858.3986229819564
+Median: 1649.0
+Mode: 618
+
+Standard Deviation: 1197.4082916395741
+Range: 6681
+Variance: 1433786.6168872034
+IQR: 1303.0
+
+Skewness: 1.481200386531717
+Kurtosis: 2.579023919407253
+

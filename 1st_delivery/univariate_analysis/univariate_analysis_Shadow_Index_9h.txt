@@ -1,0 +1,27 @@
+Univariate Analysis for Shadow_Index_9h
+Frequency Distribution (Top 10):
+Shadow_Index_9h
+230    104
+224    101
+228     93
+233     92
+226     88
+232     87
+231     84
+242     84
+229     82
+234     79
+Name: count, dtype: int64
+
+Mean: 218.78893637226972
+Median: 224.0
+Mode: 230
+
+Standard Deviation: 23.765034434150603
+Range: 171
+Variance: 564.7768616563638
+IQR: 31.0
+
+Skewness: -1.0468728275664723
+Kurtosis: 1.38121962308849
+

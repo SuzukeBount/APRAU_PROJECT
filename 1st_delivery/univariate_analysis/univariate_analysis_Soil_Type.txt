@@ -1,0 +1,27 @@
+Univariate Analysis for Soil_Type
+Frequency Distribution (Top 10):
+Soil_Type
+18    630
+20    536
+3     326
+12    264
+28    263
+23    262
+22    253
+29    231
+1     187
+31    162
+Name: count, dtype: int64
+
+Mean: 16.726495726495727
+Median: 18.0
+Mode: 18
+
+Standard Deviation: 9.408698652024503
+Range: 34
+Variance: 88.5236103246077
+IQR: 14.25
+
+Skewness: -0.3474332563828249
+Kurtosis: -1.027242840868142
+

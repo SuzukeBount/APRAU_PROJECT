@@ -1,0 +1,27 @@
+Univariate Analysis for Slope
+Frequency Distribution (Top 10):
+Slope
+9     236
+13    229
+11    216
+10    215
+14    215
+12    214
+15    211
+7     201
+16    191
+18    182
+Name: count, dtype: int64
+
+Mean: 15.012820512820513
+Median: 14.0
+Mode: 9
+
+Standard Deviation: 7.896283686400633
+Range: 50
+Variance: 62.351296056116766
+IQR: 11.0
+
+Skewness: 0.7742911354522254
+Kurtosis: 0.6499092020157149
+

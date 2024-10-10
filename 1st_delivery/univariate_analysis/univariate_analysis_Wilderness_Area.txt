@@ -1,0 +1,21 @@
+Univariate Analysis for Wilderness_Area
+Frequency Distribution (Top 10):
+Wilderness_Area
+2    2301
+0    1753
+1     149
+3       9
+Name: count, dtype: int64
+
+Mean: 1.134377967711301
+Median: 2.0
+Mode: 2
+
+Standard Deviation: 0.9763216714995658
+Range: 3
+Variance: 0.9532040062397062
+IQR: 2.0
+
+Skewness: -0.2574334723747043
+Kurtosis: -1.875695829451868
+

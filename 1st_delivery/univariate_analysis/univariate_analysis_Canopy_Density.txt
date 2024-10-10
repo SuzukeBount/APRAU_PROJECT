@@ -1,0 +1,27 @@
+Univariate Analysis for Canopy_Density
+Frequency Distribution (Top 10):
+Canopy_Density
+88.19    5
+62.61    5
+65.96    5
+44.02    5
+51.04    5
+85.25    5
+51.55    4
+84.65    4
+36.01    4
+46.92    4
+Name: count, dtype: int64
+
+Mean: 59.5162155745489
+Median: 59.375
+Mode: 44.02
+
+Standard Deviation: 17.235468296198974
+Range: 59.980000000000004
+Variance: 297.06136738928
+IQR: 29.765
+
+Skewness: 0.025696387358883053
+Kurtosis: -1.1798441642228514
+

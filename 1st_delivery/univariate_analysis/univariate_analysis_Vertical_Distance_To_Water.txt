@@ -1,0 +1,27 @@
+Univariate Analysis for Vertical_Distance_To_Water
+Frequency Distribution (Top 10):
+Vertical_Distance_To_Water
+0     326
+4      74
+3      66
+13     58
+8      58
+5      52
+2      49
+6      49
+23     46
+19     45
+Name: count, dtype: int64
+
+Mean: 53.674264007597344
+Median: 36.0
+Mode: 0
+
+Standard Deviation: 64.3179237806495
+Range: 693
+Variance: 4136.7953194534375
+IQR: 74.0
+
+Skewness: 1.6414079895736136
+Kurtosis: 4.386582199697147
+

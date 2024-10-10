@@ -1,0 +1,27 @@
+Univariate Analysis for Rainfall_Summer
+Frequency Distribution (Top 10):
+Rainfall_Summer
+218.17    3
+156.54    3
+164.78    3
+423.37    3
+248.03    3
+163.08    3
+151.95    3
+260.67    3
+172.07    3
+349.14    3
+Name: count, dtype: int64
+
+Mean: 301.91070512820517
+Median: 303.095
+Mode: 151.95
+
+Standard Deviation: 86.09935961106075
+Range: 299.91
+Variance: 7413.0997254347585
+IQR: 148.0575
+
+Skewness: -0.0377826727736863
+Kurtosis: -1.1799161777815668
+

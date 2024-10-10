@@ -1,0 +1,20 @@
+Univariate Analysis for Vegetation_Type
+Frequency Distribution (Top 10):
+Vegetation_Type
+1    1944
+0    1404
+2     864
+Name: count, dtype: int64
+
+Mean: 0.8717948717948718
+Median: 1.0
+Mode: 1
+
+Standard Deviation: 0.7225987479581979
+Range: 2
+Variance: 0.5221489505507553
+IQR: 1.0
+
+Skewness: 0.19807409427061515
+Kurtosis: -1.0732875614185708
+

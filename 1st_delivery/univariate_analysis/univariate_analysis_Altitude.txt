@@ -1,0 +1,27 @@
+Univariate Analysis for Altitude
+Frequency Distribution (Top 10):
+Altitude
+2830    21
+2820    21
+2809    19
+2807    18
+2763    18
+2827    18
+2795    17
+2813    16
+2759    16
+2784    16
+Name: count, dtype: int64
+
+Mean: 2948.4553656220323
+Median: 2873.0
+Mode: 2820
+
+Standard Deviation: 256.62249393872423
+Range: 1612
+Variance: 65855.10439533056
+IQR: 365.25
+
+Skewness: 0.7365259859473773
+Kurtosis: -0.24963556351854388
+

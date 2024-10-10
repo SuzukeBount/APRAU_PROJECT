@@ -1,0 +1,27 @@
+Univariate Analysis for Horizontal_Distance_To_Roadways
+Frequency Distribution (Top 10):
+Horizontal_Distance_To_Roadways
+150    43
+120    31
+210    17
+124    15
+240    14
+162    14
+277    14
+295    13
+212    12
+242    12
+Name: count, dtype: int64
+
+Mean: 1974.7932098765432
+Median: 1717.0
+Mode: 150
+
+Standard Deviation: 1436.4643785769279
+Range: 6806
+Variance: 2063429.9109203997
+IQR: 1807.5
+
+Skewness: 0.9003654750573478
+Kurtosis: 0.1870574422355431
+

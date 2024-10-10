@@ -1,0 +1,27 @@
+Univariate Analysis for Horizontal_Distance_To_Water
+Frequency Distribution (Top 10):
+Horizontal_Distance_To_Water
+0      249
+30     234
+60     134
+150    134
+67     111
+90      99
+108     98
+42      98
+85      86
+124     81
+Name: count, dtype: int64
+
+Mean: 265.6949192782526
+Median: 212.0
+Mode: 0
+
+Standard Deviation: 225.6762006926668
+Range: 1343
+Variance: 50929.74755907683
+IQR: 271.0
+
+Skewness: 1.3783376090948167
+Kurtosis: 2.0817664626153753
+

@@ -1,0 +1,27 @@
+Univariate Analysis for Wind_Exposure_Level
+Frequency Distribution (Top 10):
+Wind_Exposure_Level
+53.55    5
+55.54    5
+58.19    4
+61.39    4
+49.22    4
+57.95    4
+48.13    4
+42.87    4
+16.50    4
+16.31    4
+Name: count, dtype: int64
+
+Mean: 34.902718423551754
+Median: 34.805
+Mode: 53.55
+
+Standard Deviation: 17.187517834530073
+Range: 59.97
+Variance: 295.4107693122893
+IQR: 29.47
+
+Skewness: -0.0044281918012611995
+Kurtosis: -1.1949127098081347
+
