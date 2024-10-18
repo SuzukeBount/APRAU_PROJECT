@@ -7,12 +7,13 @@ from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis
 from sklearn.linear_model import LinearRegression
 from sklearn.linear_model import Ridge, RidgeCV, Lasso
-from sklearn.metrics import r2_score,mean_absolute_error
+from sklearn.metrics import r2_score,mean_absolute_error, mean_squared_error
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import GridSearchCV, cross_val_score, LeaveOneOut
 import numpy as np
 from sklearn import svm
+from sklearn.metrics import classification_report, confusion_matrix
 from sklearn import metrics
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.neighbors import KNeighborsRegressor
@@ -24,7 +25,21 @@ from sklearn.utils import resample
 
 
 class Regression:
-    
+
+    def linearRegression(self, X_train, Y_train, X_text, Y_test):
+        # Logistic Regression with increased max_iter
+        linear_model=LinearRegression()
+        linear_model.fit(X_train, Y_train)
+        y_pred_linear=linear_model.predict(X_text)
+
+        print(f"Coeficient :\n{linear_model.coef_}")
+        print(f"Intercept :\n{linear_model.intercept_}")
+        print(f"Mean Square Error:\n{mean_squared_error(Y_test, y_pred_linear)*100}")
+        print(f"Mean Absolute Error:\n{mean_absolute_error(Y_test, y_pred_linear)*100}")
+        print(f"R-Squared:\n{r2_score(Y_test, y_pred_linear)*100}")
+
+
+
     def logisticRegression(self, X_train, Y_train, X_test, Y_test):
         scaler = StandardScaler()
         X_train_scaled = scaler.fit_transform(X_train)
@@ -37,6 +52,8 @@ class Regression:
         
         acc = accuracy_score(Y_test, Y_pred)
         print("Logistic Regression model accuracy on test data (in %):", acc * 100)
+        print(f"Classification Report:\n{classification_report(Y_test, Y_pred)}")
+        print(f"Confusion Matrix:\n{confusion_matrix(Y_test, Y_pred)}")
         return acc * 100
         
     def logisticRegressionOptimized(self, X_train, Y_train, X_test, Y_test):
