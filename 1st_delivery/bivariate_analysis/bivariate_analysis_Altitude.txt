@@ -1,0 +1,13 @@
+Bivariate Analysis for Altitude
+Describe: count    4212.000000
+mean     2948.455366
+std       256.622494
+min      2236.000000
+25%      2764.000000
+50%      2873.000000
+75%      3129.250000
+max      3848.000000
+Name: Altitude, dtype: float64
+Covariance: 94.70835845069995
+Correlation: 0.510735896919131
+

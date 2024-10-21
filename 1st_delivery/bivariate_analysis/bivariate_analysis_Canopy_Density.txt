@@ -1,0 +1,13 @@
+Bivariate Analysis for Canopy_Density
+Describe: count    4212.000000
+mean       59.516216
+std        17.235468
+min        30.000000
+25%        44.547500
+50%        59.375000
+75%        74.312500
+max        89.980000
+Name: Canopy_Density, dtype: float64
+Covariance: -0.0028742792076917488
+Correlation: -0.00023078557520240899
+

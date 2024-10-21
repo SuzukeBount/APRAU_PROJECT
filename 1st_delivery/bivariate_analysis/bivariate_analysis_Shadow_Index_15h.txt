@@ -1,0 +1,13 @@
+Bivariate Analysis for Shadow_Index_15h
+Describe: count    4212.000000
+mean      131.937797
+std        43.864853
+min         0.000000
+25%       106.750000
+50%       136.000000
+75%       162.000000
+max       248.000000
+Name: Shadow_Index_15h, dtype: float64
+Covariance: -2.328090653904
+Correlation: -0.07344902005233704
+

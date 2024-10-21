@@ -1,0 +1,13 @@
+Bivariate Analysis for Slope
+Describe: count    4212.000000
+mean       15.012821
+std         7.896284
+min         0.000000
+25%         9.000000
+50%        14.000000
+75%        20.000000
+max        50.000000
+Name: Slope, dtype: float64
+Covariance: 0.2858995670679357
+Correlation: 0.050106440296487226
+

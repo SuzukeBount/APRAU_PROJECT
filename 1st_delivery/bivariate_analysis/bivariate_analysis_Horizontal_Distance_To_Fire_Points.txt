@@ -1,0 +1,13 @@
+Bivariate Analysis for Horizontal_Distance_To_Fire_Points
+Describe: count    4212.000000
+mean     1858.398623
+std      1197.408292
+min        42.000000
+25%       999.000000
+50%      1649.000000
+75%      2302.000000
+max      6723.000000
+Name: Horizontal_Distance_To_Fire_Points, dtype: float64
+Covariance: -66.50741951786834
+Correlation: -0.07686535400585161
+

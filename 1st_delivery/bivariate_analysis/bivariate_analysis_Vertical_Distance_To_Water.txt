@@ -1,0 +1,13 @@
+Bivariate Analysis for Vertical_Distance_To_Water
+Describe: count    4212.000000
+mean       53.674264
+std        64.317924
+min      -146.000000
+25%         7.000000
+50%        36.000000
+75%        81.000000
+max       547.000000
+Name: Vertical_Distance_To_Water, dtype: float64
+Covariance: 5.839967362646063
+Correlation: 0.1256554120340848
+

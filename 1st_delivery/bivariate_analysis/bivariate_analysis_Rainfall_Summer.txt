@@ -1,0 +1,13 @@
+Bivariate Analysis for Rainfall_Summer
+Describe: count    4212.000000
+mean      301.910705
+std        86.099360
+min       150.070000
+25%       228.235000
+50%       303.095000
+75%       376.292500
+max       449.980000
+Name: Rainfall_Summer, dtype: float64
+Covariance: 1.5499123175565834
+Correlation: 0.02491208079452474
+

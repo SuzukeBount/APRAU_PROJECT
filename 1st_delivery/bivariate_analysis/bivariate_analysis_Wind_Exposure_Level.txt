@@ -1,0 +1,13 @@
+Bivariate Analysis for Wind_Exposure_Level
+Describe: count    4212.000000
+mean       34.902718
+std        17.187518
+min         5.030000
+25%        20.367500
+50%        34.805000
+75%        49.837500
+max        65.000000
+Name: Wind_Exposure_Level, dtype: float64
+Covariance: 0.11638042002326017
+Correlation: 0.009370646476661445
+

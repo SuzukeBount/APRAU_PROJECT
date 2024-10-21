@@ -1,0 +1,13 @@
+Bivariate Analysis for Wilderness_Area
+Describe: count    4212.000000
+mean        1.134378
+std         0.976322
+min         0.000000
+25%         0.000000
+50%         2.000000
+75%         2.000000
+max         3.000000
+Name: Wilderness_Area, dtype: float64
+Covariance: 0.13454383817717944
+Correlation: 0.19071009327588861
+

@@ -1,0 +1,13 @@
+Bivariate Analysis for Soil_Type
+Describe: count    4212.000000
+mean       16.726496
+std         9.408699
+min         0.000000
+25%         8.750000
+50%        18.000000
+75%        23.000000
+max        34.000000
+Name: Soil_Type, dtype: float64
+Covariance: 2.804870029044807
+Correlation: 0.4125589169336721
+

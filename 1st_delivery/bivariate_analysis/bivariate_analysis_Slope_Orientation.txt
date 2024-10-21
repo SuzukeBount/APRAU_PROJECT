@@ -1,0 +1,13 @@
+Bivariate Analysis for Slope_Orientation
+Describe: count    4212.000000
+mean      146.568851
+std       101.830474
+min         0.000000
+25%        66.000000
+50%       117.000000
+75%       216.000000
+max       359.000000
+Name: Slope_Orientation, dtype: float64
+Covariance: 0.20331975473272146
+Correlation: 0.0027631509158371277
+

@@ -1,0 +1,13 @@
+Bivariate Analysis for Horizontal_Distance_To_Water
+Describe: count    4212.000000
+mean      265.694919
+std       225.676201
+min         0.000000
+25%        95.000000
+50%       212.000000
+75%       366.000000
+max      1343.000000
+Name: Horizontal_Distance_To_Water, dtype: float64
+Covariance: 12.484268917182712
+Correlation: 0.07655616124773108
+

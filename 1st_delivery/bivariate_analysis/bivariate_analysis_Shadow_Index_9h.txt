@@ -1,0 +1,13 @@
+Bivariate Analysis for Shadow_Index_9h
+Describe: count    4212.000000
+mean      218.788936
+std        23.765034
+min        83.000000
+25%       205.000000
+50%       224.000000
+75%       236.000000
+max       254.000000
+Name: Shadow_Index_9h, dtype: float64
+Covariance: 0.9563110047555544
+Correlation: 0.05568824107463408
+

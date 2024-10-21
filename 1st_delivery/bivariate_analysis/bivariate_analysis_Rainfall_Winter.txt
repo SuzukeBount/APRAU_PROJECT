@@ -1,0 +1,13 @@
+Bivariate Analysis for Rainfall_Winter
+Describe: count    4212.000000
+mean      638.248777
+std       319.210647
+min        90.010000
+25%       361.165000
+50%       631.595000
+75%       916.855000
+max      1199.190000
+Name: Rainfall_Winter, dtype: float64
+Covariance: 1.729373009638979
+Correlation: 0.00749745907888019
+
