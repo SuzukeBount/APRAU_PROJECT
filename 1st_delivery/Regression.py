@@ -238,6 +238,64 @@ class Regression:
     
 
 
+
+    def bestCforLogictic(self, X, Y, cv):
+        X_train, X_test, Y_train, Y_test=train_test_split(X, Y, test_size=0.2, random_state=42)
+
+        log_reg = LogisticRegression(solver='saga', max_iter=1000) 
+
+        param_grid = {'C': [0.001, 0.01, 0.1, 1, 10, 100]}
+
+        grid_search = GridSearchCV(log_reg, param_grid, cv=cv, scoring='accuracy') 
+        grid_search.fit(X_train, Y_train)
+
+        results = pd.DataFrame(grid_search.cv_results_)
+
+        sorted_results = results.sort_values(by='rank_test_score')
+        top_10_Cs = sorted_results[['param_C', 'mean_test_score', 'rank_test_score']].head(10)
+        print(top_10_Cs)
+
+
+
+
+
+
+
+
+
+    def logisticRegressionRidgeLasso(self, X, Y, penalty, C):
+        X_train, X_test, Y_train, Y_test=train_test_split(X, Y, test_size=0.2, random_state=42)
+        scaler = StandardScaler()
+        X_train_scaled = scaler.fit_transform(X_train)
+        X_test_scaled = scaler.transform(X_test)
+        
+        lr = LogisticRegression(penalty=penalty, solver='saga', max_iter=1000, C=C)
+        lr.fit(X_train_scaled, Y_train)
+        
+        Y_pred = lr.predict(X_test_scaled)
+        
+        acc = accuracy_score(Y_test, Y_pred)
+        print("Logistic Regression model accuracy on test data (in %):", acc * 100)
+        print("Coefficients:", lr.coef_)
+
+
+
+    def logisticRegressionElastic(self, X, Y, l1, C):
+        X_train, X_test, Y_train, Y_test=train_test_split(X, Y, test_size=0.2, random_state=42)
+        scaler = StandardScaler()
+        X_train_scaled = scaler.fit_transform(X_train)
+        X_test_scaled = scaler.transform(X_test)
+        
+        lr = LogisticRegression(penalty='elasticnet', solver='saga',max_iter=2000, C=C, l1_ratio=l1)
+        lr.fit(X_train_scaled, Y_train)
+        
+        Y_pred = lr.predict(X_test_scaled)
+        
+        acc = accuracy_score(Y_test, Y_pred)
+        print("Logistic Regression model accuracy on test data (in %):", acc * 100)
+
+
+
     def ridgeCrossValidation(self, X, Y, cv):
         X_train, X_test, Y_train, Y_test=train_test_split(X, Y, test_size=0.2, random_state=42)
         ridge_cv=RidgeCV(alphas=[0.1,1,10.0,100.0], cv=cv)
