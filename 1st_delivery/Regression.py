@@ -239,6 +239,10 @@ class Regression:
 
 
 
+
+
+
+
     def bestCforLogictic(self, X, Y, cv):
         X_train, X_test, Y_train, Y_test=train_test_split(X, Y, test_size=0.2, random_state=42)
 
@@ -254,11 +258,6 @@ class Regression:
         sorted_results = results.sort_values(by='rank_test_score')
         top_10_Cs = sorted_results[['param_C', 'mean_test_score', 'rank_test_score']].head(10)
         print(top_10_Cs)
-
-
-
-
-
 
 
 
@@ -293,10 +292,66 @@ class Regression:
         
         acc = accuracy_score(Y_test, Y_pred)
         print("Logistic Regression model accuracy on test data (in %):", acc * 100)
+        print("Coefficients:", lr.coef_)
 
 
 
-    def ridgeCrossValidation(self, X, Y, cv):
+    def logisticRegressionRegularization(self, X_train, Y_train, X_test, Y_test, penalty, C):
+        scaler = StandardScaler()
+        X_train_scaled = scaler.fit_transform(X_train)
+        X_test_scaled = scaler.transform(X_test)
+        
+        lr = LogisticRegression(solver='saga', penalty=penalty, C=C, max_iter=2000)
+        lr.fit(X_train_scaled, Y_train)
+        
+        Y_pred = lr.predict(X_test_scaled)
+        
+        acc = accuracy_score(Y_test, Y_pred)
+        print("Logistic Regression model accuracy on test data (in %):", acc * 100)
+       #print(f"Classification Report:\n{classification_report(Y_test, Y_pred)}")
+        #print(f"Confusion Matrix:\n{confusion_matrix(Y_test, Y_pred)}")
+        return acc * 100
+    
+    def crossValidation_logisticRegressionWithLasso(self, X, Y, cv, penalty, C):
+        scaler = StandardScaler()
+        X_scaled = scaler.fit_transform(X)
+        
+        # Realizar validação cruzada
+        scores = cross_val_score(LogisticRegression(solver='saga',penalty=penalty, C=C, max_iter=2000), X_scaled, Y, cv=cv, scoring='accuracy')
+        mean_scores = np.mean(scores) * 100
+        print(f"Logistic Regression model accuracy with {cv}-fold cross-validation (in %):", mean_scores)
+        return mean_scores
+
+    def leaveOneOutCrossValidation_logisticRegressionRegularization(self, X, Y, penalty, C):
+        scaler = StandardScaler()
+        X_scaled = scaler.fit_transform(X)
+        
+        loo = LeaveOneOut()
+        scores = cross_val_score(LogisticRegression(solver='saga', penalty=penalty, C=C, max_iter=2000), X_scaled, Y, cv=loo, scoring='accuracy')
+        mean_scores = np.mean(scores) * 100
+        print(f"Logistic Regression model accuracy with leave-one-out cross-validation (in %):", mean_scores)
+        return mean_scores
+
+    def bootstrap_logisticRegressionRegularization(self, X_train, Y_train, n, penalty, C):
+        scores = []
+        
+        scaler = StandardScaler()
+        X_train_scaled = scaler.fit_transform(X_train)
+        
+        lr = LogisticRegression(solver='saga', penalty=penalty, C=C, max_iter=2000)
+        lr.fit(X_train_scaled, Y_train)
+        
+        for _ in range(n):
+            X_bs, y_bs = resample(X_train_scaled, Y_train)
+            lr.fit(X_bs, y_bs)
+            score = lr.score(X_train_scaled, Y_train) 
+            scores.append(score)
+        mean_score = np.mean(scores) * 100
+        print(f"Bootstrap Mean Accuracy: {mean_score:.2f}%")
+        return mean_score
+
+
+    """def ridgeCrossValidation(self, X, Y, cv):
         X_train, X_test, Y_train, Y_test=train_test_split(X, Y, test_size=0.2, random_state=42)
         ridge_cv=RidgeCV(alphas=[0.1,1,10.0,100.0], cv=cv)
         ridge_cv.fit(X_train, Y_train)
@@ -322,7 +377,6 @@ class Regression:
         print(f"Best alpha for ElasticNet regression:",elasticnet_cv.alpha_)
         print(f"awdawdawd", elasticnet_cv.alphas_)
         print(f"Coeficient for ElasticNet regression:",elasticnet_cv.coef_)
-
 
 
     def gridSearchRidge(self, X, Y, cv):
@@ -356,83 +410,4 @@ class Regression:
         best_alpha= grid_search.best_params_['alpha']
         print(f"Best alpha with Grid search is: {best_alpha}")    
 
-
-
-
-    def ridgeRegression(self, X, Y, alpha):
-        scaler = StandardScaler()
-        X_scaled = scaler.fit_transform(X)
-
-        X_train, X_test, y_train, y_test = train_test_split(X_scaled, Y, test_size=0.2, random_state=42)
-
-        ridge_model = Ridge(alpha=alpha)
-        ridge_model.fit(X_train, y_train)
-        ridge_predictions = ridge_model.predict(X_test)
-
-        ridge_mse = mean_squared_error(y_test, ridge_predictions)
-        ridge_r2 = r2_score(y_test, ridge_predictions)
-
-
-        print(f"Mean Squared Error: {ridge_mse}")
-        print(f"RMSE", np.sqrt(mean_squared_error(y_test, ridge_predictions)))
-        print(f"Model coefficients: ", (ridge_model.coef_))
-        print(f"R^2 Score: {ridge_r2}")
-        print(f"Ridge Training Score: ", ridge_model.score(X_train, y_train) * 100)
-        print(f"Ridge Testing Score: ", ridge_model.score(X_test, y_test) * 100)
-
-    def lassoRegression(self, X, Y, alpha):
-        scaler = StandardScaler()
-        X_scaled = scaler.fit_transform(X)
-
-        X_train, X_test, y_train, y_test = train_test_split(X_scaled, Y, test_size=0.2, random_state=42)
-
-        lasso_model = Lasso(alpha=alpha)
-        lasso_model.fit(X_train, y_train)
-        lasso_predictions = lasso_model.predict(X_test)
-
-        lasso_mse = mean_squared_error(y_test, lasso_predictions)
-        lasso_r2 = r2_score(y_test, lasso_predictions)
-
-        print(f"Mean Squared Error: {lasso_mse}")
-        print(f"RMSE", np.sqrt(mean_squared_error(y_test, lasso_predictions)))
-        print(f"Model coefficients: ", (lasso_model.coef_))
-        print(f"R^2 Score: {lasso_r2}")
-        print(f"Lasso Training Score: ", lasso_model.score(X_train, y_train) * 100)
-        print(f"Lasso Testing Score: ", lasso_model.score(X_test, y_test) * 100)
-    
-    
-    def linearRegression(self, X, Y):
-        X_train, X_test, Y_train, Y_test=train_test_split(X, Y, test_size=0.2, random_state=42)
-        linear_model=LinearRegression()
-        linear_model.fit(X_train, Y_train)
-        y_pred_linear=linear_model.predict(X_test)
-
-        print(f"Coeficient :\n{linear_model.coef_}")
-        print(f"Intercept :\n{linear_model.intercept_}")
-        print(f"Mean Square Error:\n{mean_squared_error(Y_test, y_pred_linear)*100}")
-        print(f"Mean Absolute Error:\n{mean_absolute_error(Y_test, y_pred_linear)*100}")
-        print(f"R-Squared:\n{r2_score(Y_test, y_pred_linear)*100}")
-        print("Linear Regression Model Training Score: ",linear_model.score(X_train, Y_train)*100)
-        print("Linear Regression Model Testing Score: ",linear_model.score(X_test, Y_test)*100)
-
-    def elasticNetRegression(self, X, Y, alpha, ratio):
-        scaler = StandardScaler()
-        X_scaled = scaler.fit_transform(X)
-
-        X_train, X_test, y_train, y_test = train_test_split(X_scaled, Y, test_size=0.2, random_state=42)
-
-        elastic_net_model = ElasticNet(alpha=alpha, l1_ratio=ratio)  # l1_ratio=0.5 for equal contribution from Lasso and Ridge
-        elastic_net_model.fit(X_train, y_train)
-        elastic_net_predictions = elastic_net_model.predict(X_test)
-    
-
-        elastic_mse = mean_squared_error(y_test, elastic_net_predictions)
-        elastic_r2 = r2_score(y_test, elastic_net_predictions)
-
-
-        print(f"Mean Squared Error: {elastic_mse}")
-        print(f"RMSE", np.sqrt(mean_squared_error(y_test, elastic_net_predictions)))
-        print(f"Model coefficients: ", (elastic_net_model.coef_))
-        print(f"R^2 Score: {elastic_r2}")
-        print(f"Elastic Net Training Score: ", elastic_net_model.score(X_train, y_train) * 100)
-        print(f"Elastic Net Testing Score: ", elastic_net_model.score(X_test, y_test) * 100)
+"""
