@@ -1,5 +1,6 @@
 Bivariate Analysis for Vertical_Distance_To_Water
-Describe: count    4212.000000
+1-Descrição de estadisticas
+count    4212.000000
 mean       53.674264
 std        64.317924
 min      -146.000000
@@ -11,3 +12,36 @@ Name: Vertical_Distance_To_Water, dtype: float64
 Covariance: 5.839967362646063
 Correlation: 0.1256554120340848
 
+
+
+2- Análise bivaraida com o tipo de vegetação
+Covariance: 5.839967362646063
+Correlation: 0.1256554120340848
+
+A covariança positiva, sugere que existe alguma associação entre o tipo de vegetação e a distância vertical a água, ou seja, variando a distância vertical a água, o tipo de vegetação ira variar com esse valor
+Uma correlação positiva de 0.1256554120340848, indica uma correlação ligeiramente positiva entre o tipo de vegetação e a distância vertical a água, esta correlação sugere que tem alguma influência no tipo de vegetação
+
+3- Análise de gráficos
+Exitem 3 graficos para as diferentes colunas
+
+3.1- Bar Chart 
+Indicanos que quanto maior for a distância vertical a água irá ser um tipo de vegetação ou outro
+Quanto maior for a media, o tipo de vegetação irá ser tipo 2 (7), enquanto que o tipo 0(2), tem a media mais baixa
+
+3.2- Dis Plot
+O plot de densidade, revela como a distância vertical a água é distribuida ao longo do tipo de vegetação
+vegetação tipo 0, os três tipos de vegetação estão em concentrações muito idênticas, sendo este tipo o segundo com maior densidade
+vegetação tipo 1, é o que maior densidade tem
+vegetação tipo 2, é o que menor densidade tem, embora ambos os três têm picos muito identicos enquanto a valores, em 20
+Este plot de aqui, demonstra que cada tipo de vegetação não depende significativamente da distância, embora tem máximos diferentes, o nível de densidade nos picos é a única variação
+
+3.3- Scatter Plots
+Como se pode observar, nos scatter plots:
+A distância, varia dependendo do tipo de vegetação, sendo que o tipo 0 e o tipo 1, começam em -100, e o tipo 2, começa em 0
+E a linha de regressão no grafico, varia dependendo do tipo de vegetação que é
+
+4- Conclusão
+Quanto maior for a distância vertical a água, mais varia o tipo de vegetação
+tipo de vegetação acima de 250, não pode ser tipo 1, e 
+vegetação acima dos 250, indica uma maior probabilidade de ser tipo 2 ou 0 enquanto que se for menor que 0, tipo 0 e 1
+E tendo uma correlação de 0.12, a altitude tem uma pequena influência, embora não seja muito significativa

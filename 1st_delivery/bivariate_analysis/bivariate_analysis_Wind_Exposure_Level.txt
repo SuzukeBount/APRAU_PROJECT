@@ -1,5 +1,6 @@
 Bivariate Analysis for Wind_Exposure_Level
-Describe: count    4212.000000
+1-Descrição de estadisticas
+count    4212.000000
 mean       34.902718
 std        17.187518
 min         5.030000
@@ -11,3 +12,32 @@ Name: Wind_Exposure_Level, dtype: float64
 Covariance: 0.11638042002326017
 Correlation: 0.009370646476661445
 
+2- Análise bivaraida com o tipo de vegetação
+Covariance: 0.11638042002326017
+Correlation: 0.009370646476661445
+
+A covariança positiva, sugere que existe mínima associação entre o tipo de vegetação e a exposição do vento, ou seja, variando a exposição do vento, o tipo de vegetação ira variar com esse valor, embora seja pouco notável
+Uma correlação positiva de 0.009370646476661445, indica que entre o tipo de vegetação e a exposição do vento, existe uma pequena correlação positiva, embora não irá ter muito impacto, devido ao valora muito perto de 0
+
+3- Análise de gráficos
+Exitem 3 graficos para as diferentes colunas
+
+3.1- Bar Chart 
+Como se pode observar, a diferença entre as médias de cada tipo de vegetação com valores práticamente idênticos
+
+3.2- Dis Plot
+O plot de densidade, revela como a exposição do vento é distribuida ao longo do tipo de vegetação
+vegetação tipo 0, tem a segunda maior densidade com picos em 10 e 50, mas mantendo uma densidade muito parecida ao longo dos valores
+vegetação tipo 1, tem picos em 20 e 50, mas mantendo praticamente a mesma densidade
+vegetação tipo 2, nãp tem um pico espefíco, pois no valor de 20 até 50, mantêm-se nos mesmos valores de densidade
+Este plot de aqui, conseguimos determinar, da quantidade de exposição do vento, não podemos determinar qual irá ser o tipo de vegetação
+
+
+3.3- Scatter Plots
+Como se pode observar, nos scatter plots:
+Mais uma vez, devido que tem dados muitos idênticos, não podemos distinguir qual irá ser o tipo de vegetação dependendo da quantidade de exposição do vento
+Mas conseguimos ver que existe uma pequena divergência na reta no gráfico, indicado pela densidade de datos de cada tipo
+
+4- Conclusão
+As exposição do vento, não iram ser muito determinantes a hora de encontrar qual irá ser o tipo de vegetação
+Por isso, é uma coluna que entre a covariança e a correlação, tão baixas, não tem quase impacto no tipo de vegetação

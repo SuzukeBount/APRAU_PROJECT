@@ -1,5 +1,6 @@
 Bivariate Analysis for Rainfall_Winter
-Describe: count    4212.000000
+1-Descrição de estadisticas
+count    4212.000000
 mean      638.248777
 std       319.210647
 min        90.010000
@@ -11,3 +12,33 @@ Name: Rainfall_Winter, dtype: float64
 Covariance: 1.729373009638979
 Correlation: 0.00749745907888019
 
+2- Análise bivaraida com o tipo de vegetação
+Covariance: 1.729373009638979
+Correlation: 0.00749745907888019
+
+A covariança positiva, sugere que existe mínima associação entre o tipo de vegetação e a chuvas no inverno, ou seja, variando a chuvas no inverno, o tipo de vegetação ira variar com esse valor, embora seja pouco notável
+Uma correlação positiva de 0.00749745907888019, indica que entre o tipo de vegetação e a chuvas no inverno, existe uma pequena correlação positiva, embora não irá ter muito impacto, devido ao valora muito perto de 0
+
+3- Análise de gráficos
+Exitem 3 graficos para as diferentes colunas
+
+3.1- Bar Chart 
+Como se pode observar, a diferença entre as médias de cada tipo de vegetação, é minima, sendo a mais notoria, a diferença entre o tipo 0 e 1, e o tipo 2, sendo este o que maior média tem
+Mas com valores, práticamente idênticos
+
+3.2- Dis Plot
+O plot de densidade, revela como a chuvas no inverno é distribuida ao longo do tipo de vegetação
+vegetação tipo 0, tem concentração identica entre os 3 tipos, mas esta é a segunda com maior densidade em relação as chuvas no inverno
+vegetação tipo 1, tem a a maior densidade em relação as chuvas de inverno
+vegetação tipo 2, tem a menor densidade em relação as chuvas no inverno
+Este plot de aqui, conseguimos determinar, da quantidade de chuvas no inverno, não podemos determinar qual irá ser o tipo de vegetação, o que sim podemos tirar em Conclusão, é que existe uma maior densidade de tipo 1
+
+
+3.3- Scatter Plots
+Como se pode observar, nos scatter plots:
+Mais uma vez, devido que tem dados muitos idênticos, não podemos distinguir qual irá ser o tipo de vegetação dependendo da quantidade de chuvas no inverno
+Mas conseguimos ver que existe uma pequena divergência na reta no gráfico, indicado pela densidade de datos de cada tipo
+
+4- Conclusão
+As chuvas no inverno, não iram ser muito determinantes a hora de encontrar qual irá ser o tipo de vegetação
+Por isso, é uma coluna que entre a covariança e a correlação, tão baixas, não tem quase impacto no tipo de vegetação

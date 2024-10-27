@@ -1,5 +1,6 @@
 Bivariate Analysis for Shadow_Index_9h
-Describe: count    4212.000000
+1-Descrição de estadisticas
+count    4212.000000
 mean      218.788936
 std        23.765034
 min        83.000000
@@ -11,3 +12,33 @@ Name: Shadow_Index_9h, dtype: float64
 Covariance: 0.9563110047555544
 Correlation: 0.05568824107463408
 
+2- Análise bivaraida com o tipo de vegetação
+Covariance: 0.9563110047555544
+Correlation: 0.05568824107463408
+
+A covariança positiva, sugere que existe mínima associação entre o tipo de vegetação e o índice de sombra_9, ou seja, variando o índice de sombra_9, o tipo de vegetação ira variar com esse valor, embora seja pouco notável
+Uma correlação positiva de 0.05568824107463408, indica que entre o tipo de vegetação e o índice de sombra_9, existe uma pequena correlação positiva, embora não irá ter muito impacto, devido ao valora muito perto de 0
+
+3- Análise de gráficos
+Exitem 3 graficos para as diferentes colunas
+
+3.1- Bar Chart 
+Como se pode observar, a diferença entre as médias de cada tipo de vegetação, é minima, sendo a mais notoria, a diferença entre o tipo 0 e 2, e o tipo 1, sendo este o que maior média tem
+Mas com valores, práticamente idênticos
+
+3.2- Dis Plot
+O plot de densidade, revela como o índice de sombra_9 é distribuida ao longo do tipo de vegetação
+vegetação tipo 0, tem concentração identica entre os 3 tipos, mas a densidade começa a subir a partir dos 175 até os 250
+vegetação tipo 1, tem a a maior densidade em relação as chuvas de inverno, a densidade tem dois picos, um em 220 e outro em 250
+vegetação tipo 2, tem a menor densidade em relação as indices de sombra_9, a densidade começa a subir, e tem um pico mais pequeno que o resto, em 220
+Este plot de aqui, conseguimos determinar, da quantidade de indices de sombra_9, não podemos determinar qual irá ser o tipo de vegetação, o que sim podemos tirar em Conclusão, é que existe uma maior densidade de tipo 1
+
+
+3.3- Scatter Plots
+Como se pode observar, nos scatter plots:
+Mais uma vez, devido que tem dados muitos idênticos, não podemos distinguir qual irá ser o tipo de vegetação dependendo da quantidade de indices de sombra_9
+Mas conseguimos ver que existe uma pequena divergência na reta no gráfico, indicado pela densidade de datos de cada tipo
+
+4- Conclusão
+As indices de sombra_9, não iram ser muito determinantes a hora de encontrar qual irá ser o tipo de vegetação
+Por isso, é uma coluna que entre a covariança e a correlação, tão baixas, não tem quase impacto no tipo de vegetação
