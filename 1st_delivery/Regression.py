@@ -1,16 +1,18 @@
+import warnings
 from sklearn.linear_model import LogisticRegression
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis
 from sklearn.linear_model import Ridge, RidgeCV, Lasso, LassoCV, ElasticNet, ElasticNetCV
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
-from sklearn.model_selection import GridSearchCV, cross_val_score, LeaveOneOut, train_test_split
+from sklearn.model_selection import GridSearchCV, cross_val_score, LeaveOneOut, train_test_split, cross_val_predict
 from sklearn.metrics import classification_report, confusion_matrix
 import numpy as np
 from sklearn.metrics import accuracy_score
 from sklearn.utils import resample
 import pandas as pd
-
+# Set warnings to ignore
+warnings.filterwarnings('ignore')
 
 class Regression:
 
@@ -135,10 +137,15 @@ class Regression:
         scaler = StandardScaler()
         X_scaled = scaler.fit_transform(X)
         
+        logisctic=LogisticRegression(max_iter=2000)
+        y_pred = cross_val_predict(logisctic, X_scaled, Y, cv=cv)
+
         # Perform cross-validation with logistic regression
-        scores = cross_val_score(LogisticRegression(max_iter=2000), X_scaled, Y, cv=cv, scoring='accuracy')
+        scores = cross_val_score(logisctic, X_scaled, Y, cv=cv, scoring='accuracy')
         mean_scores = np.mean(scores) * 100
         print(f"Logistic Regression model accuracy with {cv}-fold cross-validation (in %):", mean_scores)
+        print(f"Classification Report:\n{classification_report(Y, y_pred)}")
+        print(f"Confusion Matrix:\n{confusion_matrix(Y, y_pred)}")
        
         return mean_scores
     
@@ -146,12 +153,16 @@ class Regression:
         # Scale entire feature set
         scaler = StandardScaler()
         X_scaled = scaler.fit_transform(X)
-        
+
+        lda=LinearDiscriminantAnalysis()
+        y_pred = cross_val_predict(lda, X_scaled, Y, cv=cv)  
+
         # Perform cross-validation with LDA
-        scores = cross_val_score(LinearDiscriminantAnalysis(), X_scaled, Y, cv=cv, scoring='accuracy')
+        scores = cross_val_score(lda, X_scaled, Y, cv=cv, scoring='accuracy')
         mean_scores = np.mean(scores) * 100
         print(f"Linear Discriminant Analysis model accuracy with {cv}-fold cross-validation (in %):", mean_scores)
-        
+        print(f"Classification Report:\n{classification_report(Y, y_pred)}")
+        print(f"Confusion Matrix:\n{confusion_matrix(Y, y_pred)}")
         return mean_scores
     
     def crossValidation_quadraticDiscriminantAnalysis(self, X, Y, cv):
@@ -159,11 +170,15 @@ class Regression:
         scaler = StandardScaler()
         X_scaled = scaler.fit_transform(X)
         
+        qda=QuadraticDiscriminantAnalysis()
+        y_pred = cross_val_predict(qda, X_scaled, Y, cv=cv)  
+
         # Perform cross-validation with QDA
         scores = cross_val_score(QuadraticDiscriminantAnalysis(), X_scaled, Y, cv=cv, scoring='accuracy')
         mean_scores = np.mean(scores) * 100
         print(f"Quadratic Discriminant Analysis model accuracy with {cv}-fold cross-validation (in %):", mean_scores)
- 
+        print(f"Classification Report:\n{classification_report(Y, y_pred)}")
+        print(f"Confusion Matrix:\n{confusion_matrix(Y, y_pred)}")
         return mean_scores
 
     def leaveOneOutCrossValidation_logisticRegression(self, X, Y):
@@ -173,10 +188,15 @@ class Regression:
         
         # Apply Leave-One-Out cross-validation with logistic regression
         loo = LeaveOneOut()
-        scores = cross_val_score(LogisticRegression(max_iter=2000), X_scaled, Y, cv=loo, scoring='accuracy')
+        logisctic=LogisticRegression(max_iter=2000)
+        y_pred = cross_val_predict(logisctic, X_scaled, Y, cv=loo)
+
+        scores = cross_val_score(logisctic, X_scaled, Y, cv=loo, scoring='accuracy')
         mean_scores = np.mean(scores) * 100
         print(f"Logistic Regression model accuracy with leave-one-out cross-validation (in %):", mean_scores)
-
+        print(f"Classification Report:\n{classification_report(Y, y_pred)}")
+        print(f"Confusion Matrix:\n{confusion_matrix(Y, y_pred)}")
+       
         return mean_scores
         
     def leaveOneOutCrossValidation_linearDiscriminantAnalysis(self, X, Y):
@@ -186,9 +206,15 @@ class Regression:
         
         # Apply Leave-One-Out cross-validation with LDA
         loo = LeaveOneOut()
-        scores = cross_val_score(LinearDiscriminantAnalysis(), X_scaled, Y, cv=loo, scoring='accuracy')
+        lda=LinearDiscriminantAnalysis()
+        y_pred = cross_val_predict(lda, X_scaled, Y, cv=loo)
+
+        scores = cross_val_score(lda, X_scaled, Y, cv=loo, scoring='accuracy')
         mean_scores = np.mean(scores) * 100
         print(f"Linear Discriminant Analysis model accuracy with leave-one-out cross-validation (in %):", mean_scores)
+        print(f"Classification Report:\n{classification_report(Y, y_pred)}")
+        print(f"Confusion Matrix:\n{confusion_matrix(Y, y_pred)}")
+       
         return mean_scores
         
     def leaveOneOutCrossValidation_quadraticDiscriminantAnalysis(self, X, Y):
@@ -198,9 +224,15 @@ class Regression:
         
         # Apply Leave-One-Out cross-validation with QDA
         loo = LeaveOneOut()
-        scores = cross_val_score(QuadraticDiscriminantAnalysis(), X_scaled, Y, cv=loo, scoring='accuracy')
+        qda=QuadraticDiscriminantAnalysis()
+        y_pred = cross_val_predict(qda, X_scaled, Y, cv=loo)
+
+        scores = cross_val_score(qda, X_scaled, Y, cv=loo, scoring='accuracy')
         mean_scores = np.mean(scores) * 100
         print(f"Quadratic Discriminant Analysis model accuracy with leave-one-out cross-validation (in %):", mean_scores)
+        print(f"Classification Report:\n{classification_report(Y, y_pred)}")
+        print(f"Confusion Matrix:\n{confusion_matrix(Y, y_pred)}")
+       
         return mean_scores
         
     def bootstrap_logisticRegression(self, X_train, Y_train, X_test, Y_test, n):
@@ -214,6 +246,10 @@ class Regression:
         # Train logistic regression model
         lr = LogisticRegression(max_iter=2000)
         lr.fit(X_train_scaled, Y_train)
+
+
+        y_pred = lr.predict(X_test)
+        
         
         # Perform bootstrapping with logistic regression
         for _ in range(n):
@@ -223,6 +259,8 @@ class Regression:
             scores.append(score)
         mean_score = np.mean(scores) * 100
         print(f"Bootstrap Mean Accuracy: {mean_score:.2f}%")
+        print(f"Classification Report:\n", classification_report(Y_test, y_pred))
+        print(f"Confusion Matrix:\n", confusion_matrix(Y_test, y_pred))
        
         return mean_score
     
@@ -238,6 +276,8 @@ class Regression:
         lda = LinearDiscriminantAnalysis()
         lda.fit(X_train_scaled, Y_train)
         
+        y_pred = lda.predict(X_test)
+
         # Perform bootstrapping with LDA
         for _ in range(n):
             X_bs, y_bs = resample(X_train_scaled, Y_train)
@@ -247,6 +287,8 @@ class Regression:
         
         mean_score = np.mean(scores) * 100
         print(f"Bootstrap Mean Accuracy: {mean_score:.2f}%")
+        print(f"Classification Report:\n{classification_report(Y_test, y_pred)}")
+        print(f"Confusion Matrix:\n{confusion_matrix(Y_test, y_pred)}")
      
         return mean_score
         
@@ -261,7 +303,8 @@ class Regression:
         # Train QDA model
         qda = QuadraticDiscriminantAnalysis()
         qda.fit(X_train_scaled, Y_train)
-        
+        y_pred = qda.predict(X_test)
+
         # Perform bootstrapping with QDA
         for _ in range(n):
             X_bs, y_bs = resample(X_train_scaled, Y_train)
@@ -269,7 +312,8 @@ class Regression:
             score = qda.score(X_test_scaled, Y_test)
             scores.append(score)
         mean_score = np.mean(scores) * 100
-       
+        print(f"Classification Report:\n{classification_report(Y_test, y_pred)}")
+        print(f"Confusion Matrix:\n{confusion_matrix(Y_test, y_pred)}")      
         return mean_score
 
 
