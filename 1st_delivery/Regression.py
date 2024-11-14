@@ -11,6 +11,9 @@ import numpy as np
 from sklearn.metrics import accuracy_score
 from sklearn.utils import resample
 import pandas as pd
+from sklearn.tree import DecisionTreeClassifier
+
+
 # Set warnings to ignore
 warnings.filterwarnings('ignore')
 
@@ -489,3 +492,25 @@ class Regression:
         grid_search.fit(X_train, Y_train)
         best_alpha= grid_search.best_params_['alpha']
         print(f"Best alpha with Grid search is: {best_alpha}")    
+
+
+
+
+
+        #Parte 2 Trabalho
+    def dt_function(self, X, Y):
+        X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.3, random_state=42, stratify=Y)
+
+        dt = DecisionTreeClassifier(random_state=42)
+        dt.fit(X_train, y_train)
+
+        y_pred = dt.predict(X_test)
+        y_pred_train=dt.predict(X_train)
+        acc=accuracy_score(y_test, y_pred)
+        train_acc=accuracy_score(y_train, y_pred_train)
+
+        print("Accuracy:", acc*100, "\nTrain Accuracy:", train_acc*100)
+        print("\nClassification Report:\n", classification_report(y_test, y_pred))
+        print("\nConfusion Matrix", confusion_matrix(y_test, y_pred))
+        return acc*100, dt
+            
