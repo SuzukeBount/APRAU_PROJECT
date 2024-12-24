@@ -6,12 +6,20 @@ from sklearn.linear_model import Ridge, RidgeCV, Lasso, LassoCV, ElasticNet, Ela
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import GridSearchCV, cross_val_score, LeaveOneOut, train_test_split, cross_val_predict
-from sklearn.metrics import classification_report, confusion_matrix
+from sklearn.metrics import classification_report, confusion_matrix, ConfusionMatrixDisplay
 import numpy as np
 from sklearn.metrics import accuracy_score
 from sklearn.utils import resample
 import pandas as pd
 from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
+import matplotlib.pyplot as plt
+from sklearn.tree import plot_tree
+
+from sklearn.svm import SVC
+
+from sklearn.metrics import accuracy_score, mean_squared_error, mean_absolute_error
+
 
 
 # Set warnings to ignore
@@ -498,10 +506,24 @@ class Regression:
 
 
         #Parte 2 Trabalho
-    def dt_function(self, X, Y):
+    def dt_function(self, X, Y, abc=0):
         X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.3, random_state=42, stratify=Y)
+        
+        if abc==0:
+             dt = DecisionTreeClassifier(random_state=42)
+        else:
 
-        dt = DecisionTreeClassifier(random_state=42)
+            dt = DecisionTreeClassifier(
+                    ccp_alpha=0.0,
+                    criterion='entropy',
+                    max_depth=40,
+                    max_leaf_nodes=None,
+                    min_samples_leaf=1,
+                    min_samples_split=2,
+                    splitter='best',
+                    random_state=42
+                )
+            
         dt.fit(X_train, y_train)
 
         y_pred = dt.predict(X_test)
@@ -512,5 +534,242 @@ class Regression:
         print("Accuracy:", acc*100, "\nTrain Accuracy:", train_acc*100)
         print("\nClassification Report:\n", classification_report(y_test, y_pred))
         print("\nConfusion Matrix", confusion_matrix(y_test, y_pred))
+
+
+        # Compute the confusion matrix for classes 0, 1, 2
+        cmatrix_test = confusion_matrix(y_true=y_test, y_pred=y_pred, labels=[0, 1, 2])
+
+        # Calculate the error rate
+        # Sum of off-diagonal elements divided by total number of samples
+        error_rate = (cmatrix_test.sum() - np.trace(cmatrix_test)) / cmatrix_test.sum()
+
+        print("Error Rate:", error_rate)
+
+        disp = ConfusionMatrixDisplay(confusion_matrix=cmatrix_test, display_labels=['0', '1', '2'])
+        disp.plot()
+
+        accuracy_score(y_test,y_pred)
+
         return acc*100, dt
-            
+    
+
+    def grid_search_decision_tree(self, X, Y):
+     
+        X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.3, random_state=42, stratify=Y)
+
+        param_grid = {
+        'criterion': ['gini', 'entropy'],
+        'splitter': ['best', 'random'],
+        'max_depth': [None, 10, 20, 30, 40],
+        'min_samples_split': [2, 5, 10],
+        'min_samples_leaf': [1, 2, 4],
+        'max_leaf_nodes': [None, 10, 20, 30],
+        'ccp_alpha': [0.0, 0.01, 0.1],
+        }
+
+        # Initialize the classifier
+        dt_classifier = DecisionTreeClassifier()
+
+        # Set up the GridSearchCV
+        grid_search = GridSearchCV(estimator=dt_classifier, param_grid=param_grid, 
+                                scoring='accuracy', cv=3, n_jobs=-1, verbose=1)
+
+        # Fit the grid search to the training data
+        grid_search.fit(X_train, y_train)
+
+        # Get the best model and parameters
+        best_model = grid_search.best_estimator_
+        best_params = grid_search.best_params_
+
+        # Evaluate the model on the test set
+        y_pred = best_model.predict(X_test)
+        test_accuracy = accuracy_score(y_test, y_pred)
+        print("Best Parameters:", grid_search.best_params_)
+
+        return best_model, best_params, test_accuracy
+    
+    def rf_function(self, X, Y, abc=0):
+       
+        # Split the dataset
+        X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.3, random_state=42, stratify=Y)
+        if abc==0:
+            rf = RandomForestClassifier(random_state=42)
+        else:
+            rf = RandomForestClassifier(class_weight=None, criterion='entropy', max_depth=None, max_features=None, max_samples=None, min_samples_leaf=2, min_samples_split=2, n_estimators=100, oob_score=True, random_state=42, verbose=0)
+
+        rf.fit(X_train, y_train)
+
+        # Make predictions
+        y_pred = rf.predict(X_test)
+        y_pred_train = rf.predict(X_train)
+
+        # Calculate accuracies
+        acc = accuracy_score(y_test, y_pred)
+        train_acc = accuracy_score(y_train, y_pred_train)
+
+        # Print results
+        print("Accuracy:", acc * 100, "\nTrain Accuracy:", train_acc * 100)
+        print("\nClassification Report:\n", classification_report(y_test, y_pred))
+        print("\nConfusion Matrix:\n", confusion_matrix(y_test, y_pred))
+
+        
+        # Compute the confusion matrix for classes 0, 1, 2
+        cmatrix_test = confusion_matrix(y_true=y_test, y_pred=y_pred, labels=[0, 1, 2])
+
+        # Calculate the error rate
+        # Sum of off-diagonal elements divided by total number of samples
+        error_rate = (cmatrix_test.sum() - np.trace(cmatrix_test)) / cmatrix_test.sum()
+
+        print("Error Rate:", error_rate)
+
+        disp = ConfusionMatrixDisplay(confusion_matrix=cmatrix_test, display_labels=['0', '1', '2'])
+        disp.plot()
+
+        accuracy_score(y_test,y_pred)
+            # Plot the first tree in the Random Forest
+        plt.figure(figsize=(60, 40))
+        plot_tree(rf.estimators_[0], filled=True, feature_names=X.columns, class_names=['0', '1', '2'], fontsize=6)
+        plt.show()
+
+        return acc * 100, rf
+
+
+    def grid_search_random_forest(self, X, Y):
+   
+        X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.3, random_state=42, stratify=Y)
+
+        # Define the parameter grid
+        param_grid = {
+            'n_estimators': [100, 200],
+            'criterion': ['gini', 'entropy'],
+            'max_depth': [None, 10, 20],
+            'min_samples_split': [2, 5, 10],
+            'min_samples_leaf': [2, 4],
+            'max_features': ['sqrt', 'log2', None],
+            #'bootstrap': [True, False],
+            'oob_score': [True, False],
+            #   'n_jobs': [-1],
+            'random_state': [42],
+            'verbose': [0, 1],
+            #'warm_start': [True, False],
+            'class_weight': [None, 'balanced'],
+            #'ccp_alpha': [0.01, 0.1],
+            'max_samples': [None, 0.5, 0.75],
+        }
+
+        # Initialize the classifier
+        rf_classifier = RandomForestClassifier()
+
+        # Set up the GridSearchCV
+        grid_search = GridSearchCV(estimator=rf_classifier, param_grid=param_grid, 
+                                scoring='accuracy', cv=3, n_jobs=-1, verbose=1)
+
+        # Fit the grid search to the training data
+        grid_search.fit(X_train, y_train)
+
+        # Get the best model and parameters
+        best_model = grid_search.best_estimator_
+        best_params = grid_search.best_params_
+
+        # Evaluate the model on the test set
+        y_pred = best_model.predict(X_test)
+        test_accuracy = accuracy_score(y_test, y_pred)
+        print("Best Parameters:", grid_search.best_params_)
+
+
+        return best_model, best_params, test_accuracy
+    
+    def build_svm_classifier(self, X, Y , kernel='linear'):
+
+    
+        # Split data into training and testing sets
+        X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.3, random_state=420)
+        
+        # Initialize SVM with the specified kernel
+        svm = SVC(kernel=kernel, random_state=42)
+        
+        # Train the SVM classifier
+        svm.fit(X_train, y_train)
+        
+        # Predict on the test set
+        y_pred = svm.predict(X_test)
+        
+        # Calculate accuracy
+        acc = accuracy_score(y_test, y_pred)
+        print(f"Accuracy with {kernel} kernel: {acc:.4f}\n")
+        
+        # Calculate Mean Squared Error (MSE)
+        mse = mean_squared_error(y_test, y_pred)
+        print(f"Mean Squared Error (MSE): {mse:.4f}")
+        
+        # Calculate Mean Absolute Error (MAE)
+        mae = mean_absolute_error(y_test, y_pred)
+        print(f"Mean Absolute Error (MAE): {mae:.4f}")
+        
+        # Calculate Root Mean Squared Error (RMSE)
+        rmse = np.sqrt(mse)
+        print(f"Root Mean Squared Error (RMSE): {rmse:.4f}")
+
+    def gridSearchSVM(self, X, Y, kernel):
+               
+        # Split data into training and testing sets
+        X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.3, random_state=42)
+        
+        # Initialize SVM with the specified kernel
+        svm = SVC(kernel=kernel, random_state=42)
+
+        # Define parameter grid for GridSearchCV
+        param_grid = {
+            'C': [0.1, 1],
+            'degree': [2, 3, 4],
+            'gamma': ['scale', 'auto', 0.01],
+            'coef0': [0.0, 0.1, 1.0],
+            'shrinking': [True, False],
+            'probability': [True, False],
+            'tol': [0.001, 0.1],
+            'cache_size': [200, 500],
+            'class_weight': [None, 'balanced'],
+            'verbose': [False],
+            'max_iter': [2000],
+            'decision_function_shape': ['ovr', 'ovo'],
+            'break_ties': [True, False]
+        }
+        
+        # Perform GridSearchCV to find the best parameters
+        grid_search = GridSearchCV(svm, param_grid, cv=3, verbose=1, n_jobs=-1)
+        grid_search.fit(X_train, y_train)
+        
+        # Get the best estimator
+        best_svm = grid_search.best_estimator_
+        print("Best Parameters:", grid_search.best_params_)
+
+    def build_svm_classifier_complete(self, X, Y , kernel ,C , degree, gamma, coef0, shrinking, prob, tol, cache, weight, verb, max_iter, decision_f_shape, breakt):
+
+
+        # Split data into training and testing sets
+        X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.3, random_state=420)
+        
+        # Initialize SVM with the specified kernel
+        svm = SVC(kernel=kernel ,C=C , degree=degree, gamma=gamma, coef0=coef0, shrinking=shrinking, probability=prob, tol=tol, cache_size=cache, class_weight=weight, verbose=verb,max_iter=max_iter, decision_function_shape=decision_f_shape, break_ties=breakt, random_state=42)
+        
+        # Train the SVM classifier
+        svm.fit(X_train, y_train)
+        
+        # Predict on the test set
+        y_pred = svm.predict(X_test)
+        
+        # Calculate accuracy
+        acc = accuracy_score(y_test, y_pred)
+        print(f"Accuracy with {kernel} kernel: {acc:.4f}\n")
+        
+        # Calculate Mean Squared Error (MSE)
+        mse = mean_squared_error(y_test, y_pred)
+        print(f"Mean Squared Error (MSE): {mse:.4f}")
+        
+        # Calculate Mean Absolute Error (MAE)
+        mae = mean_absolute_error(y_test, y_pred)
+        print(f"Mean Absolute Error (MAE): {mae:.4f}")
+        
+        # Calculate Root Mean Squared Error (RMSE)
+        rmse = np.sqrt(mse)
+        print(f"Root Mean Squared Error (RMSE): {rmse:.4f}")    
