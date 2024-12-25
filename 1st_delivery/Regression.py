@@ -630,7 +630,10 @@ class Regression:
         plt.figure(figsize=(60, 40))
         plot_tree(rf.estimators_[0], filled=True, feature_names=X.columns, class_names=['0', '1', '2'], fontsize=6)
         plt.show()
-
+        # Check the shapes after the split
+        print("Shape of X_train:", X_train.shape)
+        print("Shape of X_test:", X_test.shape)
+        
         return acc * 100, rf
 
 
@@ -773,3 +776,4 @@ class Regression:
         # Calculate Root Mean Squared Error (RMSE)
         rmse = np.sqrt(mse)
         print(f"Root Mean Squared Error (RMSE): {rmse:.4f}")    
+        return svm
