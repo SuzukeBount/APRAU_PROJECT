@@ -8,14 +8,14 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import GridSearchCV, cross_val_score, LeaveOneOut, train_test_split, cross_val_predict
 from sklearn.metrics import classification_report, confusion_matrix, ConfusionMatrixDisplay
 import numpy as np
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, log_loss, roc_auc_score
 from sklearn.utils import resample
 import pandas as pd
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 import matplotlib.pyplot as plt
 from sklearn.tree import plot_tree
-
+import random
 from sklearn.svm import SVC
 
 from sklearn.metrics import accuracy_score, mean_squared_error, mean_absolute_error
@@ -550,6 +550,15 @@ class Regression:
 
         accuracy_score(y_test,y_pred)
 
+        # Log Loss
+        y_pred_proba = dt.predict_proba(X_test)
+        logloss = log_loss(y_test, y_pred_proba)
+        print(f"Log Loss: {logloss:.4f}")
+
+        #ROC_AUC
+        roc_auc = roc_auc_score(y_test, y_pred_proba, multi_class="ovr")
+        print(f"ROC AUC: {roc_auc:.4f}")
+
         return acc*100, dt
     
 
@@ -615,6 +624,14 @@ class Regression:
         
         # Compute the confusion matrix for classes 0, 1, 2
         cmatrix_test = confusion_matrix(y_true=y_test, y_pred=y_pred, labels=[0, 1, 2])
+                # Log Loss
+        y_pred_proba = rf.predict_proba(X_test)
+        logloss = log_loss(y_test, y_pred_proba)
+        print(f"Log Loss: {logloss:.4f}")
+
+        #ROC_AUC
+        roc_auc = roc_auc_score(y_test, y_pred_proba, multi_class="ovr")
+        print(f"ROC AUC: {roc_auc:.4f}")
 
         # Calculate the error rate
         # Sum of off-diagonal elements divided by total number of samples
@@ -633,6 +650,8 @@ class Regression:
         # Check the shapes after the split
         print("Shape of X_train:", X_train.shape)
         print("Shape of X_test:", X_test.shape)
+
+    
         
         return acc * 100, rf
 
@@ -649,14 +668,10 @@ class Regression:
             'min_samples_split': [2, 5, 10],
             'min_samples_leaf': [2, 4],
             'max_features': ['sqrt', 'log2', None],
-            #'bootstrap': [True, False],
             'oob_score': [True, False],
-            #   'n_jobs': [-1],
             'random_state': [42],
             'verbose': [0, 1],
-            #'warm_start': [True, False],
             'class_weight': [None, 'balanced'],
-            #'ccp_alpha': [0.01, 0.1],
             'max_samples': [None, 0.5, 0.75],
         }
 
@@ -712,6 +727,15 @@ class Regression:
         # Calculate Root Mean Squared Error (RMSE)
         rmse = np.sqrt(mse)
         print(f"Root Mean Squared Error (RMSE): {rmse:.4f}")
+          
+        # Log Loss
+        logloss = log_loss(y_test, y_pred)
+        print(f"Log Loss: {logloss:.4f}")
+
+        #ROC_AUC
+        roc_auc = roc_auc_score(y_test, y_pred, multi_class="ovr")
+        print(f"ROC AUC: {roc_auc:.4f}")
+
 
     def gridSearchSVM(self, X, Y, kernel):
                
@@ -776,4 +800,151 @@ class Regression:
         # Calculate Root Mean Squared Error (RMSE)
         rmse = np.sqrt(mse)
         print(f"Root Mean Squared Error (RMSE): {rmse:.4f}")    
+                
+        logloss = log_loss(y_test, y_pred)
+        print(f"Log Loss: {logloss:.4f}")
+
+
+        roc_auc = roc_auc_score(y_test, y_pred, multi_class="ovr")
+        print(f"ROC AUC: {roc_auc:.4f}")
+
         return svm
+
+
+
+# feature_selection.py
+
+import numpy as np
+import random
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.svm import SVC
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+import matplotlib.pyplot as plt
+
+# Feature Selection Environment Class
+class FeatureSelectionEnvironment:
+    def __init__(self, X, y, max_features=5):
+        self.X = X  # Input features
+        self.y = y  # Target labels
+        self.max_features = max_features  # Maximum number of features to select
+        self.n_features = X.shape[1]  # Total number of features
+        self.current_state = np.zeros(self.n_features)  # Initial state (no features selected)
+
+    def reset(self):
+        self.current_state = np.zeros(self.n_features)
+        return self.current_state
+
+    def get_action_space(self):
+        # The action space consists of unselected features
+        return [i for i in range(self.n_features) if self.current_state[i] == 0]
+
+    def step(self, action):
+        # Update the state (mark the feature as selected)
+        self.current_state[action] = 1
+        selected_features = np.where(self.current_state == 1)[0]
+
+        # Limit the number of features selected
+        if len(selected_features) > self.max_features:
+            return self.current_state, -10, True  # Penalty for too many features
+
+        # Train models and evaluate accuracy
+        X_selected = self.X.iloc[:, selected_features]
+
+        # Split data into training and testing
+        X_train, X_test, y_train, y_test = train_test_split(X_selected, self.y, test_size=0.2, random_state=42)
+
+        # Train Random Forest Classifier
+        rf = RandomForestClassifier(class_weight=None, criterion='entropy', max_depth=None, max_features=None,
+                            max_samples=None, min_samples_leaf=2, min_samples_split=2, n_estimators=100,
+                            oob_score=True, random_state=42, verbose=0)
+        rf.fit(X_train, y_train)
+
+        rf_pred = rf.predict(X_test)
+        rf_accuracy = accuracy_score(y_test, rf_pred)
+
+        # Train SVM
+        svm = SVC(kernel='rbf',C=1,degree=2,gamma='scale',coef0=0.0,shrinking=True,probability=True,
+                  tol=0.01,cache_size=200,class_weight=None,verbose=True,max_iter=2000,
+                  decision_function_shape='ovr',break_ties=False,random_state=42)
+        svm.fit(X_train, y_train)
+
+        svm_pred = svm.predict(X_test)
+        svm_accuracy = accuracy_score(y_test, svm_pred)
+
+        # Choose the best model based on accuracy
+        accuracy = max(rf_accuracy, svm_accuracy)
+
+        # Reward: Positive for improvement, negative for no improvement or overfitting
+        if accuracy > 0.7:  # Example threshold for good performance
+            reward = 10
+        else:
+            reward = -5
+
+        # Check if the task is done
+        done = len(selected_features) >= self.max_features  # End after selecting a set of features
+
+        return self.current_state, reward, done
+
+
+# Q-Learning Agent Class
+class QLearningAgent:
+    def __init__(self, n_actions, alpha=0.1, gamma=0.9, epsilon=0.1, n_features=10):
+        # Initialize Q-table with zeros. The Q-table will have shape (2^n_features, n_actions)
+        self.q_table = np.zeros((2**n_features, n_actions))  # 2^n_features possible states (binary representations)
+        self.alpha = alpha  # Learning rate
+        self.gamma = gamma  # Discount factor
+        self.epsilon = epsilon  # Exploration factor
+        self.n_features = n_features  # Number of features
+
+    def state_to_index(self, state):
+        # Convert binary state (array of 0s and 1s) to an integer index
+        state = state.astype(int)  # Convert to integers (0 or 1)
+        return int("".join(state.astype(str)), 2)
+
+    def select_action(self, available_actions, state_index):
+        if random.uniform(0, 1) < self.epsilon:
+            # Exploration: Choose a random action
+            return random.choice(available_actions)
+        else:
+            # Exploitation: Choose the best action based on Q-values
+            return available_actions[np.argmax(self.q_table[state_index, available_actions])]
+
+    def update_q_table(self, state_index, action, reward, next_state_index, done):
+        best_next_action = np.argmax(self.q_table[next_state_index]) if not done else 0
+        self.q_table[state_index, action] += self.alpha * (reward + self.gamma * self.q_table[next_state_index, best_next_action] - self.q_table[state_index, action])
+
+
+# Function to train the Q-learning agent for feature selection
+def train_q_learning_agent(X, y, max_features=5, episodes=100):
+    env = FeatureSelectionEnvironment(X, y, max_features)
+    agent = QLearningAgent(n_actions=X.shape[1], n_features=X.shape[1])
+
+    rewards = []
+
+    for episode in range(episodes):
+        state = env.reset()
+        state_index = agent.state_to_index(state)  # Convert initial state to an index
+        done = False
+        total_reward = 0
+        
+        while not done:
+            available_actions = env.get_action_space()
+            action = agent.select_action(available_actions, state_index)
+            next_state, reward, done = env.step(action)
+            next_state_index = agent.state_to_index(next_state)  # Convert next state to an index
+            agent.update_q_table(state_index, action, reward, next_state_index, done)
+            state = next_state
+            state_index = next_state_index
+            total_reward += reward
+
+        rewards.append(total_reward)
+        print(f"Episode {episode+1}/{episodes} - Total Reward: {total_reward}")
+
+    # Plot the rewards over episodes to see the learning process
+    plt.plot(range(1, episodes+1), rewards)
+    plt.xlabel('Episodes')
+    plt.ylabel('Total Reward')
+    plt.title('Q-Learning Reward Progress')
+    plt.show()
+
