@@ -1,5 +1,6 @@
 Para as decision trees e random forest, numa primeira instância, foi pedido o mesmo tipo de análise
 
+Usar as imagens de decision tree_1 para o primeiro modelo e decision tree all atributes para o segundo
 1. Decision tree
 
 1.1. Utilizar o modelo de classificação para diferenciar as classes e construir um tree 
@@ -93,6 +94,7 @@ Em conclussão, o modelo de decision trees, ao ter os atributos corretos, melhor
 Um análise mais correto
 
 
+Usar as imagens de random Forest 1 para o primeiro modelo e Random Forest all atributes para o segundo
 
 2. Random Forest
 
