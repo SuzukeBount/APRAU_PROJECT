@@ -8,7 +8,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import GridSearchCV, cross_val_score, LeaveOneOut, train_test_split, cross_val_predict
 from sklearn.metrics import classification_report, confusion_matrix, ConfusionMatrixDisplay
 import numpy as np
-from sklearn.metrics import accuracy_score, log_loss, roc_auc_score
+from sklearn.metrics import log_loss, roc_auc_score
 from sklearn.utils import resample
 import pandas as pd
 from sklearn.tree import DecisionTreeClassifier
@@ -19,6 +19,7 @@ import random
 from sklearn.svm import SVC
 
 from sklearn.metrics import accuracy_score, mean_squared_error, mean_absolute_error
+
 
 
 
@@ -838,17 +839,8 @@ class Regression:
 
 
 
-# feature_selection.py
 
-import numpy as np
-import random
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.svm import SVC
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
-import matplotlib.pyplot as plt
 
-# Feature Selection Environment Class
 class FeatureSelectionEnvironment:
     def __init__(self, X, y, max_features=5):
         self.X = X  # Input features
