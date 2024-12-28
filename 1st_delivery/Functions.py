@@ -1,31 +1,25 @@
 import warnings
-from sklearn.linear_model import LogisticRegression
-from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
-from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis
-from sklearn.linear_model import Ridge, RidgeCV, Lasso, LassoCV, ElasticNet, ElasticNetCV
+import numpy as np
+import pandas as pd
+import random
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LogisticRegression, Ridge, RidgeCV, Lasso, LassoCV, ElasticNet, ElasticNetCV
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis, QuadraticDiscriminantAnalysis
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
-from sklearn.model_selection import GridSearchCV, cross_val_score, LeaveOneOut, train_test_split, cross_val_predict
+from sklearn.model_selection import GridSearchCV, cross_val_score, cross_val_predict, LeaveOneOut, train_test_split
 from sklearn.metrics import classification_report, confusion_matrix, ConfusionMatrixDisplay
-import numpy as np
-from sklearn.metrics import accuracy_score, log_loss, roc_auc_score
+from sklearn.metrics import accuracy_score, log_loss, roc_auc_score, mean_squared_error, mean_absolute_error
 from sklearn.utils import resample
-import pandas as pd
-from sklearn.tree import DecisionTreeClassifier
+from sklearn.tree import DecisionTreeClassifier, plot_tree
 from sklearn.ensemble import RandomForestClassifier
-import matplotlib.pyplot as plt
-from sklearn.tree import plot_tree
-import random
 from sklearn.svm import SVC
-
-from sklearn.metrics import accuracy_score, mean_squared_error, mean_absolute_error
-
 
 
 # Set warnings to ignore
 warnings.filterwarnings('ignore')
 
-class Regression:
+class Functions:
 
     def logisticRegression(self, X_train, Y_train, X_test, Y_test):
         # Scale the features for both train and test sets
@@ -837,16 +831,6 @@ class Regression:
         return svm
 
 
-
-# feature_selection.py
-
-import numpy as np
-import random
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.svm import SVC
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
-import matplotlib.pyplot as plt
 
 # Feature Selection Environment Class
 class FeatureSelectionEnvironment:
