@@ -516,8 +516,8 @@ class Regression:
             dt = DecisionTreeClassifier(
                     ccp_alpha=0.0,
                     criterion='entropy',
-                    max_depth=40,
-                    max_leaf_nodes=None,
+                    max_depth=50,
+                    max_leaf_nodes=100,
                     min_samples_leaf=1,
                     min_samples_split=2,
                     splitter='best',
@@ -545,10 +545,20 @@ class Regression:
 
         print("Error Rate:", error_rate)
 
-        disp = ConfusionMatrixDisplay(confusion_matrix=cmatrix_test, display_labels=['0', '1', '2'])
-        disp.plot()
+        # Calculate Mean Squared Error (MSE)
+        mse = mean_squared_error(y_test, y_pred)
+        print(f"Mean Squared Error (MSE): {mse:.4f}")
+        
+        # Calculate Mean Absolute Error (MAE)
+        mae = mean_absolute_error(y_test, y_pred)
+        print(f"Mean Absolute Error (MAE): {mae:.4f}")
+        
+        # Calculate Root Mean Squared Error (RMSE)
+        rmse = np.sqrt(mse)
+        print(f"Root Mean Squared Error (RMSE): {rmse:.4f}")
 
-        accuracy_score(y_test,y_pred)
+        #Accuracy Score
+        print(accuracy_score(y_test,y_pred))
 
         # Log Loss
         y_pred_proba = dt.predict_proba(X_test)
@@ -558,6 +568,9 @@ class Regression:
         #ROC_AUC
         roc_auc = roc_auc_score(y_test, y_pred_proba, multi_class="ovr")
         print(f"ROC AUC: {roc_auc:.4f}")
+
+        disp = ConfusionMatrixDisplay(confusion_matrix=cmatrix_test, display_labels=['0', '1', '2'])
+        disp.plot()
 
         return acc*100, dt
     
@@ -569,10 +582,10 @@ class Regression:
         param_grid = {
         'criterion': ['gini', 'entropy'],
         'splitter': ['best', 'random'],
-        'max_depth': [None, 10, 20, 30, 40],
+        'max_depth': [None, 10, 50, 100],
         'min_samples_split': [2, 5, 10],
         'min_samples_leaf': [1, 2, 4],
-        'max_leaf_nodes': [None, 10, 20, 30],
+        'max_leaf_nodes': [None, 10, 50, 100],
         'ccp_alpha': [0.0, 0.01, 0.1],
         }
 
@@ -604,7 +617,7 @@ class Regression:
         if abc==0:
             rf = RandomForestClassifier(random_state=42)
         else:
-            rf = RandomForestClassifier(class_weight=None, criterion='entropy', max_depth=None, max_features=None, max_samples=None, min_samples_leaf=2, min_samples_split=2, n_estimators=100, oob_score=True, random_state=42, verbose=0)
+            rf = RandomForestClassifier(class_weight=None, criterion='entropy', max_depth=50, max_features=None, max_leaf_nodes=100, min_samples_leaf=2, min_samples_split=2, n_estimators=100, random_state=42, verbose=0)
 
         rf.fit(X_train, y_train)
 
@@ -624,7 +637,8 @@ class Regression:
         
         # Compute the confusion matrix for classes 0, 1, 2
         cmatrix_test = confusion_matrix(y_true=y_test, y_pred=y_pred, labels=[0, 1, 2])
-                # Log Loss
+
+             # Log Loss
         y_pred_proba = rf.predict_proba(X_test)
         logloss = log_loss(y_test, y_pred_proba)
         print(f"Log Loss: {logloss:.4f}")
@@ -632,17 +646,32 @@ class Regression:
         #ROC_AUC
         roc_auc = roc_auc_score(y_test, y_pred_proba, multi_class="ovr")
         print(f"ROC AUC: {roc_auc:.4f}")
+              #Accuracy Score
+        print(accuracy_score(y_test,y_pred))
 
         # Calculate the error rate
         # Sum of off-diagonal elements divided by total number of samples
         error_rate = (cmatrix_test.sum() - np.trace(cmatrix_test)) / cmatrix_test.sum()
-
         print("Error Rate:", error_rate)
+        # Calculate Mean Squared Error (MSE)
+        mse = mean_squared_error(y_test, y_pred)
+        print(f"Mean Squared Error (MSE): {mse:.4f}")
+        
+        # Calculate Mean Absolute Error (MAE)
+        mae = mean_absolute_error(y_test, y_pred)
+        print(f"Mean Absolute Error (MAE): {mae:.4f}")
+        
+        # Calculate Root Mean Squared Error (RMSE)
+        rmse = np.sqrt(mse)
+        print(f"Root Mean Squared Error (RMSE): {rmse:.4f}")
 
+  
+
+        accuracy_score(y_test,y_pred)
         disp = ConfusionMatrixDisplay(confusion_matrix=cmatrix_test, display_labels=['0', '1', '2'])
         disp.plot()
 
-        accuracy_score(y_test,y_pred)
+        
             # Plot the first tree in the Random Forest
         plt.figure(figsize=(60, 40))
         plot_tree(rf.estimators_[0], filled=True, feature_names=X.columns, class_names=['0', '1', '2'], fontsize=6)
@@ -664,15 +693,14 @@ class Regression:
         param_grid = {
             'n_estimators': [100, 200],
             'criterion': ['gini', 'entropy'],
-            'max_depth': [None, 10, 20],
-            'min_samples_split': [2, 5, 10],
+            'max_depth': [None, 10, 50, 100],
+            'min_samples_split': [2, 5],
             'min_samples_leaf': [2, 4],
             'max_features': ['sqrt', 'log2', None],
-            'oob_score': [True, False],
             'random_state': [42],
             'verbose': [0, 1],
             'class_weight': [None, 'balanced'],
-            'max_samples': [None, 0.5, 0.75],
+            'max_leaf_nodes':[None, 10, 50, 100]
         }
 
         # Initialize the classifier
@@ -709,6 +737,9 @@ class Regression:
         # Train the SVM classifier
         svm.fit(X_train, y_train)
         
+
+
+        
         # Predict on the test set
         y_pred = svm.predict(X_test)
         
@@ -727,14 +758,12 @@ class Regression:
         # Calculate Root Mean Squared Error (RMSE)
         rmse = np.sqrt(mse)
         print(f"Root Mean Squared Error (RMSE): {rmse:.4f}")
-          
-        # Log Loss
-        logloss = log_loss(y_test, y_pred)
-        print(f"Log Loss: {logloss:.4f}")
 
-        #ROC_AUC
-        roc_auc = roc_auc_score(y_test, y_pred, multi_class="ovr")
-        print(f"ROC AUC: {roc_auc:.4f}")
+        print(f"Classification Report:\n{classification_report(y_test, y_pred)}")
+        print(f"Confusion Matrix:\n{confusion_matrix(y_test, y_pred)}")
+  
+
+
 
 
     def gridSearchSVM(self, X, Y, kernel):
@@ -801,13 +830,10 @@ class Regression:
         rmse = np.sqrt(mse)
         print(f"Root Mean Squared Error (RMSE): {rmse:.4f}")    
                 
-        logloss = log_loss(y_test, y_pred)
-        print(f"Log Loss: {logloss:.4f}")
 
-
-        roc_auc = roc_auc_score(y_test, y_pred, multi_class="ovr")
-        print(f"ROC AUC: {roc_auc:.4f}")
-
+        print(f"Classification Report:\n{classification_report(y_test, y_pred)}")
+        print(f"Confusion Matrix:\n{confusion_matrix(y_test, y_pred)}")
+  
         return svm
 
 
@@ -855,9 +881,9 @@ class FeatureSelectionEnvironment:
         X_train, X_test, y_train, y_test = train_test_split(X_selected, self.y, test_size=0.2, random_state=42)
 
         # Train Random Forest Classifier
-        rf = RandomForestClassifier(class_weight=None, criterion='entropy', max_depth=None, max_features=None,
-                            max_samples=None, min_samples_leaf=2, min_samples_split=2, n_estimators=100,
-                            oob_score=True, random_state=42, verbose=0)
+        rf = RandomForestClassifier(class_weight=None, criterion='entropy', max_depth=50, max_features=None, 
+                max_leaf_nodes=100, min_samples_leaf=2, min_samples_split=2, n_estimators=100, random_state=42, verbose=0)
+
         rf.fit(X_train, y_train)
 
         rf_pred = rf.predict(X_test)
