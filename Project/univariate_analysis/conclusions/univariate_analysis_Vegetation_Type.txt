@@ -1,0 +1,44 @@
+Univariate Analysis for Vegetation_Type
+Frequency Distribution (Top 10):
+Vegetation_Type
+1    1944
+0    1404
+2     864
+Name: count, dtype: int64
+
+Mean: 0.8717948717948718
+Median: 1.0
+Mode: 1
+
+Standard Deviation: 0.7225987479581979
+Range: 2
+Variance: 0.5221489505507553
+IQR: 1.0
+
+Skewness: 0.19807409427061515
+Kurtosis: -1.0732875614185708
+
+
+1. **Medidas de Tendência Central**:
+   - A média (`Mean`) é de aproximadamente 0,87, indicando que, em média, o tipo de vegetação é próximo de 1.
+   - A mediana é de 1, o que significa que metade dos valores de tipo de vegetação está abaixo de 1.
+   - A moda é 1, indicando que o tipo de vegetação 1 é o mais frequente, com 1944 ocorrências.
+
+2. **Variabilidade**:
+   - O desvio padrão (`Standard Deviation`) é de cerca de 0,72, indicando uma variabilidade moderada nos tipos de vegetação.
+   - O intervalo (`Range`) é de 2, sugerindo que existem apenas três tipos principais de vegetação (0, 1 e 2).
+   - A variância é de aproximadamente 0,52, refletindo uma dispersão relativamente baixa dos valores dos tipos de vegetação.
+   - O IQR (`Interquartile Range`) é de 1, o que indica que a metade central dos valores está distribuída numa faixa de apenas um tipo de vegetação, sugerindo uma variabilidade baixa entre o primeiro e o terceiro quartil.
+
+3. **Assimetria e Curtose**:
+   - A assimetria (`Skewness`) é ligeiramente positiva (0,20), indicando que a distribuição dos tipos de vegetação é quase simétrica, com uma pequena inclinação para valores mais altos.
+   - A curtose (`Kurtosis`) é negativa (-1,07), sugerindo que a distribuição é mais achatada do que a distribuição normal, com caudas mais leves e menos concentração em torno da média.
+
+4. **Distribuição de Frequência**:
+   - O tipo de vegetação 1 é o mais frequente, seguido pelo tipo 0 e pelo tipo 2.
+   - A maior parte dos valores está concentrada nos tipos de vegetação 0 e 1, com o tipo 2 sendo menos frequente.
+
+**Conclusão Geral**:
+A distribuição dos tipos de vegetação apresenta uma média de cerca de 0,87, com o tipo de vegetação 1 sendo o mais comum, o que sugere uma predominância de uma vegetação específica na área analisada. 
+A baixa variabilidade e a curtose negativa indicam que a maioria dos valores está distribuída de forma uniforme entre os três tipos principais de vegetação, sem grandes extremos. 
+Esta informação é relevante para entender a distribuição da vegetação na área, o que pode ser importante para a gestão ambiental, planeamento de uso da terra e conservação da biodiversidade.

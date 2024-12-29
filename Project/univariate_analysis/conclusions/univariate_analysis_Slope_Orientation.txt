@@ -1,0 +1,51 @@
+Univariate Analysis for Slope_Orientation
+Frequency Distribution (Top 10):
+Slope_Orientation
+63    44
+76    37
+86    31
+94    31
+96    31
+45    31
+75    30
+87    30
+57    29
+95    28
+Name: count, dtype: int64
+
+Mean: 146.56885090218424
+Median: 117.0
+Mode: 63
+
+Standard Deviation: 101.83047435701401
+Range: 359
+Variance: 10369.445507774488
+IQR: 150.0
+
+Skewness: 0.6239111107423263
+Kurtosis: -0.7946127179781568
+
+
+1. **Medidas de Tendência Central**:
+   - A média (`Mean`) é de aproximadamente 146,57, indicando que, em média, a orientação das encostas é em torno deste valor.
+   - A mediana é de 117, o que sugere que metade dos valores de orientação das encostas está abaixo deste valor, indicando uma distribuição assimétrica.
+   - A moda é de 63, sendo este o valor mais frequente, o que indica que muitas encostas têm orientação próxima deste valor.
+
+2. **Variabilidade**:
+   - O desvio padrão (`Standard Deviation`) é de cerca de 101,83, indicando uma alta variabilidade nas orientações das encostas.
+   - O intervalo (`Range`) é de 359, sugerindo que a orientação das encostas cobre quase todo o espectro possível, indicando uma ampla dispersão dos valores.
+   - A variância é de aproximadamente 10.369, refletindo a grande dispersão dos valores.
+   - O IQR (`Interquartile Range`) é de 150, sugerindo uma considerável variabilidade entre o primeiro e o terceiro quartil.
+
+3. **Assimetria e Curtose**:
+   - A assimetria (`Skewness`) é positiva (0,62), indicando que a distribuição dos valores de orientação das encostas é assimétrica para a direita, sugerindo a presença de alguns valores elevados que aumentam a média.
+   - A curtose (`Kurtosis`) é negativa (-0,79), indicando que a distribuição é mais achatada do que a distribuição normal, com menos concentração em torno da média e caudas mais leves.
+
+4. **Distribuição de Frequência**:
+   - A orientação mais frequente é 63, com 44 ocorrências, seguida de outros valores como 76, 86 e 94.
+   - A maioria dos valores mais frequentes está na faixa de 45 a 100, sugerindo uma concentração moderada de orientações específicas, mas com uma grande variação no geral.
+
+**Conclusão Geral**:
+A orientação das encostas apresenta uma média de aproximadamente 147 e uma moda de 63, indicando que muitas encostas têm uma orientação próxima a 63, mas os valores são amplamente dispersos, como evidenciado pelo alto desvio padrão e intervalo de 359. 
+A assimetria positiva sugere que existem algumas orientações de encosta significativamente elevadas que puxam a média para cima, enquanto a curtose negativa indica uma menor concentração de valores em torno da média. 
+Esta variabilidade pode ser importante em análises relacionadas à exposição solar, erosão e estabilidade das encostas, já que a orientação influencia diretamente esses fatores.

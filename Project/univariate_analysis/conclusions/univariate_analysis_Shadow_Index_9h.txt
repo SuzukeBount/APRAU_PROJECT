@@ -1,0 +1,52 @@
+Univariate Analysis for Shadow_Index_9h
+Frequency Distribution (Top 10):
+Shadow_Index_9h
+230    104
+224    101
+228     93
+233     92
+226     88
+232     87
+231     84
+242     84
+229     82
+234     79
+Name: count, dtype: int64
+
+Mean: 218.78893637226972
+Median: 224.0
+Mode: 230
+
+Standard Deviation: 23.765034434150603
+Range: 171
+Variance: 564.7768616563638
+IQR: 31.0
+
+Skewness: -1.0468728275664723
+Kurtosis: 1.38121962308849
+
+
+1. **Medidas de Tendência Central**:
+   - A média (`Mean`) é de aproximadamente 218,79, indicando que, em média, o índice de sombra às 9h é de cerca de 219.
+   - A mediana é de 224, o que sugere que metade dos valores do índice de sombra está abaixo deste valor.
+   - A moda é de 230, indicando que este valor é o mais frequente.
+
+2. **Variabilidade**:
+   - O desvio padrão (`Standard Deviation`) é de cerca de 23,77, o que indica uma variabilidade moderada nos valores do índice de sombra às 9h.
+   - O intervalo (`Range`) é de 171, mostrando uma diferença considerável entre os valores mínimo e máximo do índice de sombra.
+   - A variância é de aproximadamente 565, refletindo a dispersão dos valores.
+   - O IQR (`Interquartile Range`) é de 31, sugerindo que a metade central dos valores está distribuída numa faixa relativamente estreita, indicando menor variabilidade nessa região dos dados.
+
+3. **Assimetria e Curtose**:
+   - A assimetria (`Skewness`) é negativa (-1,05), indicando que a distribuição dos valores é assimétrica para a esquerda. Isso significa que há uma concentração maior de valores mais altos e poucos valores baixos, criando uma cauda à esquerda.
+   - A curtose (`Kurtosis`) é positiva (1,38), sugerindo que a distribuição é mais pontiaguda do que a normal, com uma maior concentração em torno da média e caudas mais pesadas.
+
+4. **Distribuição de Frequência**:
+   - O valor mais frequente é 230, com 104 ocorrências. Outros valores, como 224, 228 e 233, também são bastante comuns.
+   - A maioria dos valores mais frequentes está em torno de 220 a 240, sugerindo uma concentração significativa do índice de sombra nessa faixa.
+
+**Conclusão Geral**:
+O índice de sombra às 9h mostra uma média de aproximadamente 219 e uma moda de 230, sugerindo que, em geral, os valores tendem a estar no intervalo de 220 a 240.
+A distribuição é assimétrica à esquerda, o que implica que a maioria dos valores são relativamente altos, enquanto há menos valores menores, criando uma cauda à esquerda. 
+A curtose positiva indica uma concentração elevada em torno da média, o que sugere que a maioria das áreas tem um índice de sombra relativamente consistente às 9h, com algumas exceções menores. 
+Estes dados são úteis para avaliar a distribuição de luz solar em diferentes áreas durante a manhã, o que pode ser relevante para decisões relacionadas à agricultura, planejamento urbano e sustentabilidade energética.

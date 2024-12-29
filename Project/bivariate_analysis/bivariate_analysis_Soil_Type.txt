@@ -1,0 +1,50 @@
+Bivariate Analysis for Soil_Type
+1-Descrição de estadisticas
+count    4212.000000
+mean       16.726496
+std         9.408699
+min         0.000000
+25%         8.750000
+50%        18.000000
+75%        23.000000
+max        34.000000
+Name: Soil_Type, dtype: float64
+Covariance: 2.804870029044807
+Correlation: 0.4125589169336721
+
+
+2- Análise bivaraida com o tipo de vegetação
+Covariance: 2.804870029044807
+Correlation: 0.4125589169336721
+
+A covariança positiva, sugere que existe alguma associação entre o tipo de vegetação e tipo de soil, ou seja, variando tipo de soil, o tipo de vegetação ira variar com esse valor
+Uma correlação positiva de 0.4125589169336721, indica que entre o tipo de vegetação e tipo de soil, existe uma significativa correlação positiva, a qual irá ter um grande impacto no tipo de vegetação
+
+3- Análise de gráficos
+Exitem 3 graficos para as diferentes colunas
+
+3.1- Bar Chart 
+Não se pode determinar muitos neste grafico, devido que ao ser uma variável categórica, é complicado determinar qual irá ser com valores médios
+
+3.2- Dis Plot
+O plot de densidade, revela como tipo de soil é distribuida ao longo do tipo de vegetação
+vegetação tipo 0, tem exatamente o mesmo recorrido em concentração, mas com uma menor densidade, tendo os mesmos picos, exceto no 30
+vegetação tipo 1, conseguimos determinar que este tipo é mais comum, entre os valores de 0 e 35, tendo diferentes picos de densidade em, 3, 13, 20, 30
+vegetação tipo 2, tem varia picos crescentes começando em 10 até chegar ao 30, onde existe uma enorme densidade nesse valor
+Este plot de aqui, conseguimos determinar, dependendo da tipo de soil podemos determinar qual irá ser o tipo de vegetação
+Embora que haja overlap, como é uma variável categórica, podemos fazer um análise diferente, para determinar os tipos de soil mais adequados para cada tipo
+
+3.3- Scatter Plots
+Não se pode determinar muitos neste grafico, devido que ao ser uma variável categórica, é complicado determinar qual irá ser com valores médios
+
+3.4 Count plot
+Para variáveis categóricas o melhor é fazer um count plot, para determinar quais irão ser os solos mais indicados para cada tipo de vegetação
+No grafico, da para perceber, o que solos iniciais são melhores para o tipo 0, embora os tipo 1 e 2 tem algo de relevância
+Os soils intermédios são mais adequadospara o tipo 1, enquanto que o tipo 2, não tem nenhuma prevalência, e finalmente
+Nos soils finais, podemos ter em conta, que, maioritariamente irão existir, vegetação tipo 2
+Em Conclusão deste gráfico, dependendo do tipo de soil, a vegetação irá variar considerávelmente
+
+4- Conclusão
+Ao ter diferentes tipos de solo ao longo dos datos, podemos determinar que efetivamente, o tipo de solo é importante
+Devido que, aparte de uma correlação importante, graficamente podemos comprobar que efetivamente, varia o tipo de vegetação com o tipo de soil
+Sendo esta, uma das colunas mais importantes

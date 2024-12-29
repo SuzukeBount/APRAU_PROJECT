@@ -1,1 +1,0 @@
-As várias análises estão nos diretórios mais precisamente nos ficheiros .txt

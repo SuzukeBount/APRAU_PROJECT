@@ -1,0 +1,49 @@
+Bivariate Analysis for Wilderness_Area
+1-Descrição de estadisticas
+count    4212.000000
+mean        1.134378
+std         0.976322
+min         0.000000
+25%         0.000000
+50%         2.000000
+75%         2.000000
+max         3.000000
+Name: Wilderness_Area, dtype: float64
+Covariance: 0.13454383817717944
+Correlation: 0.19071009327588861
+
+2- Análise bivaraida com o tipo de vegetação
+Covariance: 0.13454383817717944
+Correlation: 0.19071009327588861
+
+A covariança positiva, sugere que existe alguma associação entre o tipo de vegetação e area selvagem, ou seja, variando area selvagem, o tipo de vegetação ira variar com esse valor
+Uma correlação positiva de 0.19071009327588861, indica que entre o tipo de vegetação e area selvagem, existe uma significativa correlação positiva, a qual irá ter um grande impacto no tipo de vegetação
+
+3- Análise de gráficos
+Exitem 3 graficos para as diferentes colunas
+
+3.1- Bar Chart 
+Não se pode determinar muitos neste grafico, devido que ao ser uma variável categórica, é complicado determinar qual irá ser com valores médios
+
+3.2- Dis Plot
+O plot de densidade, revela como area selvagem é distribuida ao longo do tipo de vegetação
+vegetação tipo 0, tem picos em 0, e em 2 com densidade moderada
+vegetação tipo 1, tem picos em 0 e em 2, com alta densidade
+vegetação tipo 2, tem picos em 0, 1, com pequena densidade e 2 com alta densidade
+Este plot de aqui, conseguimos determinar, dependendo da area selvagem podemos determinar qual irá ser o tipo de vegetação
+Embora que haja overlap, como é uma variável categórica, podemos fazer um análise diferente, para determinar os tipos de soil mais adequados para cada tipo
+
+3.3- Scatter Plots
+Não se pode determinar muitos neste grafico, devido que ao ser uma variável categórica, é complicado determinar qual irá ser com valores médios
+
+3.4 Count plot
+Para variáveis categóricas o melhor é fazer um count plot, para determinar quais irão ser as áreas mais indicados para cada tipo de vegetação
+Podemos determinar, que na área 3, existe uma prevalência no tipo 1, e tanto o tipo 0 e 2, são muito parecidos
+Na área 1, os que têm mais prevalência são o tipo 0 e 1, sendo  o 2 o que menos tem
+Na área 2, existe pouca prevalência do tipo 0 e 2
+E finalmente na área 4, só existe uma minima, no tipo 0
+
+4- Conclusão
+Ao ter diferentes tipos de área selvagem ao longo dos datos, podemos determinar que efetivamente, o área selvagem é importante
+Devido que, aparte de uma correlação importante, graficamente podemos comprobar que efetivamente, varia o tipo de vegetação com o area selvagem
+Sendo esta, uma das colunas mais importantes

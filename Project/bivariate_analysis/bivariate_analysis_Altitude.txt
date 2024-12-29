@@ -1,0 +1,42 @@
+Bivariate Analysis for Altitude
+1-Descrição de estadisticas
+count    4212.000000
+mean     2948.455366
+std       256.622494
+min      2236.000000
+25%      2764.000000
+50%      2873.000000
+75%      3129.250000
+max      3848.000000
+
+
+2- Análise bivaraida com o tipo de vegetação
+Covariance: 94.70835845069995 
+Correlation: 0.510735896919131
+
+A covariança positiva, sugere que existe alguma associação entre o tipo de vegetação e a altitudo, ou seja, variando a altitude, o tipo de vegetação ira variar com esse valor
+Uma correlação positiva de 0.51, indica uma correlação positiva entre o tipo de vegetação e a altitude, esta correlação sugere que influi no tipo de vegetação
+
+3- Análise de gráficos
+Exitem 3 graficos para as diferentes colunas
+
+3.1- Bar Chart 
+Indicanos que quanto maior for a altitude irá ser um tipo de vegetação ou outro
+Quanto maior for a media, o tipo de vegetação irá ser tipo 2 (7), enquanto que o tipo 0(2), tem a media mais baixa
+
+3.2- Dis Plot
+O plot de densidade, revela como a altitude é distribuida ao longo do tipo de vegetação
+vegetação tipo 0, esta mais concentrada em altitudes mais baixas, perto dos 2500-2800
+vegetação tipo 1, tem uma concentração significativa entre 2800-3000 metros
+vegetação tipo 2, é sem dúvida a vegetação que tem maior altitude, entre os 3000-3400 metros
+Este plot de aqui, demonstra que cada tipo de vegetação depende significativamente da altitude, reforçando a relação entre ambas
+
+3.3- Scatter Plots
+Como se pode observar, nos scatter plots:
+Tanto o plot, como as linhas de regressão par a cada tipo de vegetação, mostra uma relação linear positiva e a dependência das variaveis
+Analisando a linha de regressão, cada tipo tem uma linha completamente diferente, indicando que a altitude tem uma importância significativa
+
+4- Conclusão
+Quanto maior for a altitude, mais varia o tipo de vegetação
+vegetação acima dos 3000, indica uma maior probabilidade de ser tipo 2 enquanto que se for menor que 2800, tipo 0
+E tendo uma correlação de 0.51, a altitude tem uma influência, embora não seja muito significativa

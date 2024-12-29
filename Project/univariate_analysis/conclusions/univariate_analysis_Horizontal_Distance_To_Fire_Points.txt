@@ -1,0 +1,51 @@
+Univariate Analysis for Horizontal_Distance_To_Fire_Points
+Frequency Distribution (Top 10):
+Horizontal_Distance_To_Fire_Points
+618     15
+700     14
+1448    14
+912     13
+997     11
+1050    11
+819     11
+1860    10
+902     10
+1383    10
+Name: count, dtype: int64
+
+Mean: 1858.3986229819564
+Median: 1649.0
+Mode: 618
+
+Standard Deviation: 1197.4082916395741
+Range: 6681
+Variance: 1433786.6168872034
+IQR: 1303.0
+
+Skewness: 1.481200386531717
+Kurtosis: 2.579023919407253
+
+
+1. **Medidas de Tendência Central**:
+   - A média (`Mean`) é de aproximadamente 1858, o que indica que, em média, os pontos estão a cerca de 1858 metros de distância de pontos de incêndio.
+   - A mediana é de 1649, sugerindo que metade dos valores está abaixo desta distância.
+   - A moda é de 618, o que significa que a distância de 618 metros é a mais comum.
+
+2. **Variabilidade**:
+   - O desvio padrão (`Standard Deviation`) é de cerca de 1197, indicando uma grande variabilidade nas distâncias até os pontos de incêndio.
+   - O intervalo (`Range`) é de 6681, mostrando uma enorme diferença entre os valores mínimo e máximo, sugerindo a presença de outliers que estão muito distantes dos pontos de incêndio.
+   - A variância é de aproximadamente 1.433.786, o que reforça a alta dispersão dos valores.
+   - O IQR (`Interquartile Range`) é de 1303, indicando que a metade central dos valores está distribuída numa amplitude significativa de 1303 metros.
+
+3. **Assimetria e Curtose**:
+   - A assimetria (`Skewness`) é positiva (1,48), indicando que a distribuição dos valores de distância é altamente assimétrica para a direita, ou seja, existem alguns valores de distância muito elevados que puxam a média para cima.
+   - A curtose (`Kurtosis`) é positiva (2,58), indicando que a distribuição é mais concentrada em torno da média e tem caudas mais pesadas, o que implica a presença de outliers significativos.
+
+4. **Distribuição de Frequência**:
+   - A distância mais frequente é de 618 metros, ocorrendo 15 vezes, e há outras distâncias frequentes que estão próximas de 700 a 1448 metros, sugerindo que a maioria dos pontos está localizada em distâncias relativamente mais curtas em relação aos pontos de incêndio, enquanto existem alguns valores significativamente mais altos.
+
+**Conclusão Geral**:
+A maioria dos pontos está localizada relativamente próxima dos pontos de incêndio, com a moda de 618 metros,
+ enquanto a média e a mediana sugerem uma distribuição com valores mais elevados devido à presença de outliers.
+  A alta assimetria e a curtose positiva indicam que há algumas distâncias extremamente grandes, que puxam a média para cima e aumentam a variabilidade geral.
+   Isso pode sugerir que algumas áreas são particularmente vulneráveis, estando mais afastadas dos pontos de combate a incêndios, o que pode ser importante para planeamento de mitigação de riscos.

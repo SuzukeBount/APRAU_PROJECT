@@ -1,0 +1,44 @@
+Bivariate Analysis for Horizontal_Distance_To_Fire_Points
+1-Descrição de estadisticas
+count    4212.000000
+mean     1858.398623
+std      1197.408292
+min        42.000000
+25%       999.000000
+50%      1649.000000
+75%      2302.000000
+max      6723.000000
+Name: Horizontal_Distance_To_Fire_Points, dtype: float64
+Covariance: -66.50741951786834
+Correlation: -0.07686535400585161
+
+2- Análise bivaraida com o tipo de vegetação
+Covariance: -66.50741951786834
+Correlation: -0.07686535400585161
+
+A covariança negativa, sugere que existe alguma associação entre o tipo de vegetação e a distância horizontal para pontos de fogo, ou seja, variando a distância horizontal para pontos de fogo, o tipo de vegetação ira variar com esse valor, mas de uma maneira negativa
+Uma correlação negativa de -0.07686535400585161, indica que entre o tipo de vegetação e a distância horizontal para pontos de fogo, existe uma pequena correlação negativa, embora não irá ter muito impacto, devido ao valora muito perto de 0
+
+3- Análise de gráficos
+Exitem 3 graficos para as diferentes colunas
+
+3.1- Bar Chart 
+Indicanos que quanto maior for a distância horizontal para pontos de fogo irá ser um tipo de vegetação ou outro
+Quanto maior for a media, o tipo de vegetação irá ser tipo 0 (2), enquanto que o tipo 1(5), tem a media mais baixa
+
+3.2- Dis Plot
+O plot de densidade, revela como a distância horizontal para pontos de fogo é distribuida ao longo do tipo de vegetação
+vegetação tipo 0, esta mais concetrado entre 1500-2100, embora seja a que maiores valores tenha, chegando perto de quase of 7000
+vegetação tipo 1, tem concentração de todas entre 0 e 3000 metros, e tendo uma pequena concentração entre 5000 e 7000
+vegetação tipo 2, tem a maior concentração, desde 500 a 4000 metros tem uma concentração semelhante, chegando ate aos 5000
+Este plot de aqui, conseguimos determinar, que será muito complicado determinar qual é o tipo de vegetação, vendo únicamentea a distância horizontal para pontos de fogo
+
+3.3- Scatter Plots
+Como se pode observar, nos scatter plots:
+Como se pode observar nos scatter plots, para a vegetação tipo 0 e tipo 1, tem uma linha de regressão muito parecidas, indicando que será dificil distinguir os tipos
+Ainda assim, no tipo 2, ocorre a mesma situação, tem uma regressão linear muito idêntica aos outros dois pontos, embora tendo uma máximo muito menor
+
+4- Conclusão
+Quanto maior for a distância horizontal para pontos de fogo, irá ser e un tipo ou de outro, devido que o tipo 0, 1 e 2, têm máximos diferentes
+Ainda assim, o tipo 2 esta muito entroncado entre os outros tipos, sendo o mais dificil de determinar
+Sendo assim, a distância horizontal para pontos de fogo, não irá impactar significativamente no tipo, mas ainda assim, tem valores a ter em conta para o análise

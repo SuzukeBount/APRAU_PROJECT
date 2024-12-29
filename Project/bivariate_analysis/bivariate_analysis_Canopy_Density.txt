@@ -1,0 +1,42 @@
+Bivariate Analysis for Canopy_Density
+1-Descrição de estadisticas
+mean       59.516216
+std        17.235468
+min        30.000000
+25%        44.547500
+50%        59.375000
+75%        74.312500
+max        89.980000
+Name: Canopy_Density, dtype: float64
+Covariance: -0.0028742792076917488
+Correlation: -0.00023078557520240899
+
+2- Análise bivaraida com o tipo de vegetação
+Covariance:  -0.0028742792076917488
+Correlation:  -0.00023078557520240899
+
+A covariança menos que 0, sugere que existe uma minima associação negativa entre o tipo de vegetação e densidade de dossel
+Uma correlação negativa, perto de 0, indica uma correlação quase nula ou minimamente negativa entre o tipo de vegetação e a densidade de dossel, esta correlação sugere que não tem quase influência no tipo de vegetação
+
+3- Análise de gráficos
+Exitem 3 graficos para as diferentes colunas
+
+3.1- Bar Chart 
+No bar plot, não conseguimos tirar nenhuma conclusão, devido que todos os valores são muito semelhantes
+
+3.2- Dis Plot
+O plot de densidade, revela como a densidade de dossel é distribuida ao longo do tipo de vegetação
+vegetação tipo 0, tem a segunda maior concentração 
+vegetação tipo 1, tem a maior concentração 
+vegetação tipo 2, tem a menor concentração
+Este plot de aqui, que embora dependendo do tipo, exista maior concentração, não podemos indicar qual o tipo dependendo da densidade do dossel
+
+3.3- Scatter Plots
+Como se pode observar, nos scatter plots:
+Tanto o plot, como as linhas de regressão para cada tipo de vegetação, mostra uma relação linear positiva
+Analisando a linha de regressão, cada tipo tem uma linha completamente idêntica, indicando que a densidade de dossel não tem uma importância significativa
+
+4- Conclusão
+A densidade do dossel, não nos diz quase nada sobre que tipo de vegetação é, devido que os valores são todos muito idênticos
+Embora exista mais concentração dependendo do tipo, a densidade é idêntica
+Indicando que a densidade do dossel é uma variável muito fraca

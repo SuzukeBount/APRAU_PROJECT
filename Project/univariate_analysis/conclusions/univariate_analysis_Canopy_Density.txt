@@ -1,0 +1,51 @@
+Univariate Analysis for Canopy_Density
+Frequency Distribution (Top 10):
+Canopy_Density
+88.19    5
+62.61    5
+65.96    5
+44.02    5
+51.04    5
+85.25    5
+51.55    4
+84.65    4
+36.01    4
+46.92    4
+Name: count, dtype: int64
+
+Mean: 59.5162155745489
+Median: 59.375
+Mode: 44.02
+
+Standard Deviation: 17.235468296198974
+Range: 59.980000000000004
+Variance: 297.06136738928
+IQR: 29.765
+
+Skewness: 0.025696387358883053
+Kurtosis: -1.1798441642228514
+
+
+1. **Medidas de Tendência Central**:
+   - A média (`Mean`) da densidade do dossel é de aproximadamente 59,52, o que sugere que, em média, a densidade do dossel está em torno de 60%.
+   - A mediana é de 59,38, o que indica que metade dos valores de densidade está abaixo deste valor, mostrando uma distribuição bastante equilibrada em torno da média.
+   - A moda é de 44,02, indicando que este valor é o mais frequente na densidade do dossel.
+
+2. **Variabilidade**:
+   - O desvio padrão (`Standard Deviation`) é de cerca de 17,24, indicando uma variabilidade considerável na densidade do dossel, com alguns locais apresentando densidades significativamente diferentes da média.
+   - O intervalo (`Range`) é de aproximadamente 60, mostrando uma diferença notável entre os valores mínimo e máximo de densidade do dossel.
+   - A variância é de aproximadamente 297, o que também reflete uma dispersão considerável nos valores de densidade.
+   - O IQR (`Interquartile Range`) é de 29,77, sugerindo que a metade central dos valores está distribuída numa amplitude de aproximadamente 30%.
+
+3. **Assimetria e Curtose**:
+   - A assimetria (`Skewness`) é próxima de zero (0,03), indicando que a distribuição dos valores de densidade do dossel é bastante simétrica, sem uma inclinação significativa para qualquer dos lados.
+   - A curtose (`Kurtosis`) é negativa (-1,18), o que indica que a distribuição é mais achatada do que uma distribuição normal, com menos valores concentrados em torno da média e caudas menos pronunciadas.
+
+4. **Distribuição de Frequência**:
+   - Os valores mais frequentes da densidade do dossel são relativamente variados, com vários valores repetidos 4 ou 5 vezes, o que sugere uma distribuição sem um valor dominante claramente acima dos outros.
+   - A faixa dos valores mais frequentes varia entre 36 e 88, o que também reflete a variabilidade significativa.
+
+**Conclusão Geral**:
+A densidade do dossel apresenta uma distribuição bastante simétrica, com uma média em torno de 60%. 
+A variabilidade é considerável, mas a ausência de uma assimetria significativa sugere que a maioria dos valores está distribuída de forma homogênea. 
+A curtose negativa implica que os valores são mais espalhados e menos concentrados em torno da média, indicando uma diversidade significativa na cobertura do dossel.

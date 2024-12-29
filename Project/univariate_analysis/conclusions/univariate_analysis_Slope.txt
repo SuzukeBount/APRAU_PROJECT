@@ -1,0 +1,50 @@
+Univariate Analysis for Slope
+Frequency Distribution (Top 10):
+Slope
+9     236
+13    229
+11    216
+10    215
+14    215
+12    214
+15    211
+7     201
+16    191
+18    182
+Name: count, dtype: int64
+
+Mean: 15.012820512820513
+Median: 14.0
+Mode: 9
+
+Standard Deviation: 7.896283686400633
+Range: 50
+Variance: 62.351296056116766
+IQR: 11.0
+
+Skewness: 0.7742911354522254
+Kurtosis: 0.6499092020157149
+
+1. **Medidas de Tendência Central**:
+   - A média (`Mean`) é de aproximadamente 15,01, indicando que, em média, a inclinação das encostas está em torno deste valor.
+   - A mediana é de 14, o que sugere que metade dos valores de inclinação está abaixo deste valor, indicando uma ligeira concentração em torno de inclinações mais baixas.
+   - A moda é 9, o que indica que a inclinação de 9 graus é a mais frequente.
+
+2. **Variabilidade**:
+   - O desvio padrão (`Standard Deviation`) é de cerca de 7,90, indicando uma variabilidade considerável nas inclinações das encostas.
+   - O intervalo (`Range`) é de 50, mostrando uma grande diferença entre os valores mínimo e máximo de inclinação.
+   - A variância é de aproximadamente 62,35, refletindo a dispersão dos valores em torno da média.
+   - O IQR (`Interquartile Range`) é de 11, sugerindo que a metade central dos valores está distribuída numa faixa de 11 graus, indicando uma variabilidade relativamente baixa entre os quartis centrais.
+
+3. **Assimetria e Curtose**:
+   - A assimetria (`Skewness`) é positiva (0,77), indicando que a distribuição dos valores de inclinação é assimétrica para a direita. Isso significa que há alguns valores mais elevados que puxam a média para cima, enquanto a maioria dos valores está em torno da mediana.
+   - A curtose (`Kurtosis`) é ligeiramente positiva (0,65), o que sugere que a distribuição é um pouco mais pontiaguda do que uma distribuição normal, com caudas ligeiramente mais pesadas.
+
+4. **Distribuição de Frequência**:
+   - A inclinação mais frequente é de 9 graus, com 236 ocorrências, seguida de valores como 13, 11, e 10 graus.
+   - A maioria dos valores de inclinação está entre 9 e 18 graus, sugerindo que a maioria das encostas tem uma inclinação leve a moderada.
+
+**Conclusão Geral**:
+A inclinação das encostas apresenta uma média de cerca de 15 graus e uma moda de 9 graus, indicando que muitas encostas têm uma inclinação suave. 
+A assimetria positiva sugere que existem algumas encostas significativamente mais íngremes que aumentam a média, enquanto a curtose positiva indica uma leve concentração de valores em torno da média, com algumas caudas mais pronunciadas. 
+Esta informação é relevante para análises sobre estabilidade de encostas, erosão do solo e acessibilidade, uma vez que inclinações mais íngremes podem representar riscos ou limitações para atividades humanas e infraestruturas.

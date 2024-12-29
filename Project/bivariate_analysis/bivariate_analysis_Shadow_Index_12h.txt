@@ -1,0 +1,45 @@
+Bivariate Analysis for Shadow_Index_12h
+1-Descrição de estadisticas
+count    4212.000000
+mean      221.611823
+std        22.585736
+min        99.000000
+25%       211.000000
+50%       225.000000
+75%       238.000000
+max       254.000000
+Name: Shadow_Index_12h, dtype: float64
+Covariance: -0.9403028697733046
+Correlation: -0.05761509745955489
+
+
+2- Análise bivaraida com o tipo de vegetação
+Covariance: -0.9403028697733046
+Correlation:  -0.05761509745955489
+
+A covariança negativa, sugere que existe mínima associação entre o tipo de vegetação e o índice de sombra_12, ou seja, variando o índice de sombra_12, o tipo de vegetação ira variar com esse valor, embora seja pouco notável
+Uma correlação positiva de -0.05761509745955489, indica que entre o tipo de vegetação e o índice de sombra_12, existe uma pequena correlação positiva, embora não irá ter muito impacto, devido ao valora muito perto de 0
+
+3- Análise de gráficos
+Exitem 3 graficos para as diferentes colunas
+
+3.1- Bar Chart 
+Como se pode observar, a diferença entre as médias de cada tipo de vegetação, é minima
+Com valores, práticamente idênticos
+
+3.2- Dis Plot
+O plot de densidade, revela como o índice de sombra_12 é distribuida ao longo do tipo de vegetação
+vegetação tipo 0, tem um pico de densidade em 225, e te muma concentraçãodesde 150, até 260
+vegetação tipo 1, tem a a maior densidade chegando ao ponto 220, e tem uma curva de densidade começando em 150
+vegetação tipo 2, tem a menor densidade de todas, e tem um pico em 220
+Este plot de aqui, conseguimos determinar, da quantidade de indices de sombra_12, não podemos determinar qual irá ser o tipo de vegetação, o que sim podemos tirar em Conclusão, é que existe uma maior densidade de tipo 1
+
+
+3.3- Scatter Plots
+Como se pode observar, nos scatter plots:
+Mais uma vez, devido que tem dados muitos idênticos, não podemos distinguir qual irá ser o tipo de vegetação dependendo da quantidade de indices de sombra_12
+Mas conseguimos ver que existe uma pequena divergência na reta no gráfico, indicado pela densidade de datos de cada tipo
+
+4- Conclusão
+As indices de sombra_12, não iram ser muito determinantes a hora de encontrar qual irá ser o tipo de vegetação
+Por isso, é uma coluna que entre a covariança e a correlação, tão baixas, não tem quase impacto no tipo de vegetação

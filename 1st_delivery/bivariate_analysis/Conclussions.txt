@@ -1,9 +1,0 @@
-Em Conclusão
-As colunas principais que importam a nível de análise bivaraido com o tipo de vegetação, são:
--Altitude
--Soil_type
--Wilderness_area
--Vertical_Distance_To_Water
-
-O resto das colunas, embora tenha uma pouca relevância, ainda é preciso passar pelo análise dos diferentes algoritmos de modelagem
-Para assim ver quais as colunas que podem ser descartadas, para uma melhor performance

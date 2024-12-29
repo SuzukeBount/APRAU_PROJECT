@@ -1,0 +1,51 @@
+Univariate Analysis for Horizontal_Distance_To_Roadways
+Frequency Distribution (Top 10):
+Horizontal_Distance_To_Roadways
+150    43
+120    31
+210    17
+124    15
+240    14
+162    14
+277    14
+295    13
+212    12
+242    12
+Name: count, dtype: int64
+
+Mean: 1974.7932098765432
+Median: 1717.0
+Mode: 150
+
+Standard Deviation: 1436.4643785769279
+Range: 6806
+Variance: 2063429.9109203997
+IQR: 1807.5
+
+Skewness: 0.9003654750573478
+Kurtosis: 0.1870574422355431
+
+
+1. **Medidas de Tendência Central**:
+   - A média (`Mean`) é de aproximadamente 1975, indicando que, em média, os pontos estão a cerca de 1975 metros das estradas.
+   - A mediana é de 1717, sugerindo que metade dos pontos está a uma distância menor que este valor em relação às estradas.
+   - A moda é de 150, indicando que a distância de 150 metros é a mais frequente.
+
+2. **Variabilidade**:
+   - O desvio padrão (`Standard Deviation`) é de cerca de 1436, o que indica uma grande variabilidade nas distâncias até as estradas.
+   - O intervalo (`Range`) é de 6806, o que demonstra uma ampla dispersão entre o valor mínimo e o valor máximo de distância, sugerindo a presença de outliers.
+   - A variância é de aproximadamente 2.063.430, o que reforça a alta dispersão dos valores de distância.
+   - O IQR (`Interquartile Range`) é de 1807,5, indicando que a metade central dos valores de distância está distribuída numa ampla faixa de cerca de 1808 metros.
+
+3. **Assimetria e Curtose**:
+   - A assimetria (`Skewness`) é positiva (0,90), indicando que a distribuição dos valores é assimétrica para a direita, sugerindo que existem alguns valores de distância muito altos que aumentam a média.
+   - A curtose (`Kurtosis`) é ligeiramente positiva (0,19), indicando que a distribuição é relativamente semelhante à distribuição normal, mas com caudas um pouco mais pesadas.
+
+4. **Distribuição de Frequência**:
+   - O valor de distância mais frequente é de 150 metros, ocorrendo 43 vezes. Além disso, existem várias distâncias em torno de 120 a 300 metros que são bastante comuns.
+   - A maioria dos valores mais frequentes está relativamente próxima das estradas, sugerindo uma concentração de pontos em áreas que não estão muito afastadas das vias principais.
+
+**Conclusão Geral**:
+A variável `Horizontal_Distance_To_Roadways` apresenta uma média relativamente alta de 1975 metros, mas a moda de 150 metros indica que a maioria dos pontos está concentrada
+ a distâncias curtas das estradas. A assimetria positiva e o intervalo amplo sugerem a presença de alguns pontos bastante distantes, que afetam a média e aumentam a variabilidade geral.
+  A alta variabilidade e os outliers indicam que, enquanto muitas áreas estão próximas das estradas, outras estão significativamente mais afastadas, o que pode ser relevante em termos de acessibilidade e planeamento de infraestrutura.
