@@ -1,5 +1,6 @@
 Para as decision trees e random forest, numa primeira instância, foi pedido o mesmo tipo de análise
 
+Usar as imagens de decision tree_1 para o primeiro modelo e decision tree all atributes para o segundo
 1. Decision tree
 
 1.1. Utilizar o modelo de classificação para diferenciar as classes e construir um tree 
@@ -93,10 +94,11 @@ Em conclussão, o modelo de decision trees, ao ter os atributos corretos, melhor
 Um análise mais correto
 
 
+Usar as imagens de random Forest 1 para o primeiro modelo e Random Forest all atributes para o segundo
 
 2. Random Forest
 
-1.1. Utilizar o modelo de classificação para diferenciar as classes e construir uma tree 
+2.1. Utilizar o modelo de classificação para diferenciar as classes e construir uma tree 
 
 Accuracy: 92.16772151898735 
 Train Accuracy: 100.0
@@ -133,13 +135,97 @@ Analissando:
 - Log loss e o ROC AUC têm valores positivos
 - O teor de erro que tem o modelo é baixo
 
-1.2. Utilizar Grid Search para encontrar os melhores atributos para cada modelo
+2.2. Utilizar Grid Search para encontrar os melhores atributos para cada modelo
+Utilizando o método de Grid Search estes foram os melhores valores para o modelo de Random Forest
+{'class_weight': None, 'criterion': 'entropy', 'max_depth': None, 'max_features': None, 'max_leaf_nodes': None, 'min_samples_leaf': 2, 'min_samples_split': 2, 'n_estimators': 100, 'random_state': 42, 'verbose': 0}
+Embora este tenha sido o resultado do Grid Search, não iremos utilizar todos estes valores, devido que no max_depth e no max_leaf_nodes, se for None, irá existir overfitting
+Resultando em provar diferentes valores para o modelo, chegamos a conclussão que, para o max_depth, é 50 e para o max_leaf_nodes é 100
 
 
-1.3 Utilizar os atributos resultantes do Grid Search
+
+2.3 Utilizar os atributos resultantes do Grid Search
+Accuracy: 92.40506329113924 
+Train Accuracy: 97.96472184531886
+
+Classification Report:
+               precision    recall  f1-score   support
+
+           0       0.95      0.81      0.88       421
+           1       0.90      0.98      0.94       584
+           2       0.94      0.99      0.97       259
+
+    accuracy                           0.92      1264
+   macro avg       0.93      0.93      0.93      1264
+weighted avg       0.93      0.92      0.92      1264
 
 
-1.4 Lista ordenada com os atributos mais importantes
+Confusion Matrix:
+ [[342  64  15]
+ [ 14 570   0]
+ [  3   0 256]]
+Log Loss: 0.2346
+ROC AUC: 0.9797
+0.9240506329113924
+Error Rate: 0.0759493670886076
+Mean Squared Error (MSE): 0.1187
+Mean Absolute Error (MAE): 0.0902
+Root Mean Squared Error (RMSE): 0.3445
+
+Analisando:
+- O modelo tem uma melhor accuracy
+- O modelo apresenta menos overfitting em comparação 
+- Em termos de precision, recall e f1-score são muito idênticos entre os modelos, tendo o modelo 2, uma pequena vantagem, embora pouco notável
+- A matriz de confusão no modelo 2, na classe 2 e 1 melhora, mas não na classe 0
+- Log Loss e ROC AUC, apresenta melhores valores no modelo 2
+- O teor de erro do modelo 2 é menor
+
+Em conclusão, o modelo utilizando os atributos específicados, tem em geral, uma maior performance em comparação a não utilizar
+Ou seja, conseguimos melhorar o modelo para poder ser utilizado, sem ter tanto overfitting
+
+2.4 Lista ordenada com os atributos mais importantes
+Estes são as features com maior importância, ordenadas
+
+Altitude                              0.629886
+Id                                    0.140657
+Horizontal_Distance_To_Roadways       0.056539
+Horizontal_Distance_To_Fire_Points    0.046913
+Horizontal_Distance_To_Water          0.034146
+Slope_Orientation                     0.021079
+Shadow_Index_12h                      0.020796
+Shadow_Index_9h                       0.018765
+Shadow_Index_15h                      0.012110
+Slope                                 0.009665
+Wind_Exposure_Level                   0.009444
 
 
-1.5 Correlação entre o análise inicial da parte 1 com o ponto anterior
+2.5 Correlação entre o análise inicial da parte 1 com o ponto anterior
+
+task 2
+
+Altitude                              0.47
+Id                                    0.24
+Horizontal_Distance_To_Roadways       0.10
+Horizontal_Distance_To_Fire_Points    0.08
+Horizontal_Distance_To_Water          0.08
+Slope_Orientation                     0
+Shadow_Index_12h                      0.06
+Shadow_Index_9h                       0.06
+Shadow_Index_15h                      0.07
+Slope                                 0.05
+Wind_Exposure_Level                   0.01
+
+task 4
+
+Features eliminadas
+CANOPY_DENSITY
+RAINFALL_SUMMER
+RAINFALL_WINTER
+VERTICAL_DISTANCE_TO_WATER
+SOIL_TYPE
+WILDERNESS_AREA
+
+
+Como se pode comprobar, no análise da task 2, existem algumas correalações existentes, que podiam ser eliminadas, pela baixa correlação que estas têm no com a variável objetivo
+Contudo, a hora de estar na task 4, e de ir eliminando features com pouca correlação, conseguimos determinar, que se essas features fossem eliminadas, o dataset não iria ficar com melhor performance
+
+Comparando a parte de random forest com o resto das tasks, podemos verificar, que sim, essas features com pouca correlação, irão ter uma menor importância a hora de contruir a tree

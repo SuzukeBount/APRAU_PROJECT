@@ -3,18 +3,16 @@ import numpy as np
 import pandas as pd
 import random
 import matplotlib.pyplot as plt
-from sklearn.linear_model import LogisticRegression, Ridge, RidgeCV, Lasso, LassoCV, ElasticNet, ElasticNetCV
-from sklearn.discriminant_analysis import LinearDiscriminantAnalysis, QuadraticDiscriminantAnalysis
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
-from sklearn.model_selection import GridSearchCV, cross_val_score, cross_val_predict, LeaveOneOut, train_test_split
-from sklearn.metrics import classification_report, confusion_matrix, ConfusionMatrixDisplay
-from sklearn.metrics import accuracy_score, log_loss, roc_auc_score, mean_squared_error, mean_absolute_error
-from sklearn.utils import resample
+from sklearn.linear_model import LogisticRegression, Ridge, RidgeCV, Lasso, LassoCV, ElasticNet, ElasticNetCV
+from sklearn.svm import SVC
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis, QuadraticDiscriminantAnalysis
 from sklearn.tree import DecisionTreeClassifier, plot_tree
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.svm import SVC
-
+from sklearn.model_selection import GridSearchCV, cross_val_score, cross_val_predict, LeaveOneOut, train_test_split
+from sklearn.metrics import classification_report, confusion_matrix, ConfusionMatrixDisplay, accuracy_score, log_loss, roc_auc_score, mean_squared_error, mean_absolute_error
+from sklearn.utils import resample
 
 # Set warnings to ignore
 warnings.filterwarnings('ignore')
@@ -830,9 +828,6 @@ class Functions:
   
         return svm
 
-
-
-# Feature Selection Environment Class
 class FeatureSelectionEnvironment:
     def __init__(self, X, y, max_features=5):
         self.X = X  # Input features
